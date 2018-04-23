@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
+    <script>
+        function checkname() {
+            $.ajax({
+                type:"post",
+                url:"checkName",
+                data:"u_username="+$("#u_username").val(),
+                success:function (data) {
+                    $("#isuse").innerHTML(data);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="regist">
+        账号:<input type="text" onblur="checkname()" id="u_username" name="u_username" /><span id="isuse"></span><br/>
+        密码<input type="password" id="u_passworld" name="u_passworld" /><br/>
+        <input type="submit" value="注册">
+    </form>
+</body>
+</html>

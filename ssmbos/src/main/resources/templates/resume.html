@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        function sendresume(res_id) {
+
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>邮箱</td>
+            <td>学历</td>
+            <td>应聘职位</td>
+            <td>简历状态</td>
+        </tr>
+        <tr th:each="resume:${b_resumes}">
+            <td th:text="${resume.res_name}"></td>
+            <td th:text="${resume.res_phone}"></td>
+            <td th:text="${resume.res_email}"></td>
+            <td th:text="${resume.res_education}"></td>
+            <td th:text="${resume.res_p_name}"></td>
+            <td th:if="${resume.res_state==1}" th:text="已投递"></td>
+            <td th:if="${resume.res_state==0}" th:text="未投递"></td>
+            <td><input type="button" value="投递" onclick="sendresume('${resume.res_id}')"></td>
+        </tr>
+    </table>
+</body>
+</html>
