@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class B_recruit implements Serializable{
     private int rec_id;
-    private int rec_p_id;
+    private String rec_p_name;
     private String rec_require;
     private double rec_salary;
     private int rec_empnumber;
@@ -16,9 +16,9 @@ public class B_recruit implements Serializable{
     public B_recruit() {
     }
 
-    public B_recruit(int rec_id, int rec_p_id, String rec_require, double rec_salary, int rec_empnumber, String rec_contact) {
+    public B_recruit(int rec_id, String rec_p_name, String rec_require, double rec_salary, int rec_empnumber, String rec_contact) {
         this.rec_id = rec_id;
-        this.rec_p_id = rec_p_id;
+        this.rec_p_name = rec_p_name;
         this.rec_require = rec_require;
         this.rec_salary = rec_salary;
         this.rec_empnumber = rec_empnumber;
@@ -33,12 +33,12 @@ public class B_recruit implements Serializable{
         this.rec_id = rec_id;
     }
 
-    public int getRec_p_id() {
-        return rec_p_id;
+    public String getRec_p_id() {
+        return rec_p_name;
     }
 
-    public void setRec_p_id(int rec_p_id) {
-        this.rec_p_id = rec_p_id;
+    public void setRec_p_id(String rec_p_id) {
+        this.rec_p_name = rec_p_id;
     }
 
     public String getRec_require() {

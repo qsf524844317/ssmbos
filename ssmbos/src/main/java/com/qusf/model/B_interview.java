@@ -10,15 +10,19 @@ public class B_interview implements Serializable {
     private String i_interviewtime;
     private String i_interviewaddress;
     private int i_u_id;
+    private String i_res_name;
+    private int i_state;
 
     public B_interview() {
     }
 
-    public B_interview(int i_id, String i_interviewtime, String i_interviewaddress, int i_u_id) {
+    public B_interview(int i_id, String i_interviewtime, String i_interviewaddress, int i_u_id, String i_res_name, int i_state) {
         this.i_id = i_id;
         this.i_interviewtime = i_interviewtime;
         this.i_interviewaddress = i_interviewaddress;
         this.i_u_id = i_u_id;
+        this.i_res_name = i_res_name;
+        this.i_state = i_state;
     }
 
     public int getI_id() {
@@ -51,5 +55,21 @@ public class B_interview implements Serializable {
 
     public void setI_u_id(int i_u_id) {
         this.i_u_id = i_u_id;
+    }
+
+    public String getI_res_name() {
+        return i_res_name;
+    }
+
+    public void setI_res_name(String i_res_name) {
+        this.i_res_name = i_res_name;
+    }
+
+    public int getI_state() {
+        return i_state;
+    }
+
+    public void setI_state(int i_state) {
+        this.i_state = i_state;
     }
 }

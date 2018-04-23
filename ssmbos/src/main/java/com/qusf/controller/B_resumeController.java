@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -30,13 +32,14 @@ public class B_resumeController {
       }
   }
   @RequestMapping(value = "/sendb_resume")
-  public String sendB_resume(int res_id){
+  public void sendB_resume(int res_id, HttpServletResponse response) throws IOException {
+      response.setContentType("text/html;charset=utf-8");
       try{
+          response.getWriter().write("投递成功");
           b_resumeService.sendB_resume(res_id);
-          return "index";
       }catch (Exception e){
+          response.getWriter().write("投递失败");
           System.out.println(e);
-          return "";
       }
   }
 
@@ -47,6 +50,18 @@ public class B_resumeController {
             List<B_resume> b_resumes = b_resumeService.seeB_resume(b_user.getU_id());
             model.addAttribute("b_resumes",b_resumes);
             return "resume";
+        }catch (Exception e){
+            System.out.println(e);
+            return "";
+        }
+    }
+    @RequestMapping(value = "/receiveb_resume")
+    public String receiveB_resume(Model model,HttpSession session){
+        try{
+            B_user b_user = (B_user) session.getAttribute("user");
+            List<B_resume> b_resumes = b_resumeService.receiveB_resume(b_user.getU_id());
+            model.addAttribute("b_resumes",b_resumes);
+            return "interviewuser";
         }catch (Exception e){
             System.out.println(e);
             return "";

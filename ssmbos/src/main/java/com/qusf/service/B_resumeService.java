@@ -28,4 +28,8 @@ public class B_resumeService {
     public List<B_resume> seeB_resume(int res_u_id) {
        return b_resumeMapper.findAllB_resume(res_u_id);
     }
+
+    public List<B_resume> receiveB_resume(int res_u_id) {
+        return b_resumeMapper.findB_resumeByi_state(res_u_id);
+    }
 }

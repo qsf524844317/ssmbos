@@ -31,4 +31,14 @@ public class MyController{
     public String gotoaddresume(){
         return "addresume";
     }
+    @RequestMapping(value = "/inviteinterview")
+    public String inviteInterview(int i_u_id,String i_res_name,Model model){
+        model.addAttribute("i_u_id",i_u_id);
+        model.addAttribute("i_res_name",i_res_name);
+        return "inviteinterview";
+    }
+    @RequestMapping(value = "/sendb_recruit")
+    public String sendB_recruit(){
+        return "sendrecruit";
+    }
 }
