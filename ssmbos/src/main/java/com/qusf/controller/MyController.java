@@ -37,8 +37,12 @@ public class MyController{
         model.addAttribute("i_res_name",i_res_name);
         return "inviteinterview";
     }
-    @RequestMapping(value = "/sendb_recruit")
+    @RequestMapping(value = "/sendbrecruit")
     public String sendB_recruit(){
         return "sendrecruit";
+    }
+    @RequestMapping(value = "/gotoadddept")
+    public String gotoadddept(){
+        return "adddept";
     }
 }

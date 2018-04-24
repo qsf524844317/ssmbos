@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+    <form  action="saveb_position" method="post" >
+        部门:
+        <select name="p_d_id">
+            <option>请选择部门</option>
+            <option th:each="dept:${session.depts}" th:value="${dept.d_id}" th:text="${dept.d_name}" ></option>
+        </select><br>
+        职位:<input type="text" name="p_name"><br>
+        薪资:
+        <select name="p_salary">
+            <option value="3k-5k">3k-5k</option>
+            <option value="5k-8k">5k-8k</option>
+            <option value="8k-10k">8k-10k</option>
+            <option value="8k-10k">10k-13k</option>
+        </select><br>
+        <input type="submit" value="保存">
+    </form>
+</body>
+</html>

@@ -35,7 +35,13 @@
             <td th:text="${resume.res_p_name}"></td>
             <td th:if="${resume.res_state==1}" th:text="已投递"></td>
             <td th:if="${resume.res_state==0}" th:text="未投递"></td>
-            <td><input type="button" value="投递" th:onclick="'javascript:sendresume(\''+${resume.res_id}+'\')'"></td>
+            <td th:if="${resume.res_state==0}">
+                <input type="button" value="投递" th:onclick="'javascript:sendresume(\''+${resume.res_id}+'\')'">
+            </td>
+            <td th:if="${resume.res_state==1}">
+                <input type="button" value="投递" disabled="">
+            </td>
+            <td><input type="button" value=""></td>
         </tr>
     </table>
 </body>

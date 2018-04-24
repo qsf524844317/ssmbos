@@ -9,14 +9,14 @@ public class B_recruit implements Serializable{
     private int rec_id;
     private String rec_p_name;
     private String rec_require;
-    private double rec_salary;
+    private String rec_salary;
     private int rec_empnumber;
     private String rec_contact;
 
     public B_recruit() {
     }
 
-    public B_recruit(int rec_id, String rec_p_name, String rec_require, double rec_salary, int rec_empnumber, String rec_contact) {
+    public B_recruit(int rec_id, String rec_p_name, String rec_require, String rec_salary, int rec_empnumber, String rec_contact) {
         this.rec_id = rec_id;
         this.rec_p_name = rec_p_name;
         this.rec_require = rec_require;
@@ -33,12 +33,12 @@ public class B_recruit implements Serializable{
         this.rec_id = rec_id;
     }
 
-    public String getRec_p_id() {
+    public String getRec_p_name() {
         return rec_p_name;
     }
 
-    public void setRec_p_id(String rec_p_id) {
-        this.rec_p_name = rec_p_id;
+    public void setRec_p_name(String rec_p_name) {
+        this.rec_p_name = rec_p_name;
     }
 
     public String getRec_require() {
@@ -49,11 +49,11 @@ public class B_recruit implements Serializable{
         this.rec_require = rec_require;
     }
 
-    public double getRec_salary() {
+    public String getRec_salary() {
         return rec_salary;
     }
 
-    public void setRec_salary(double rec_salary) {
+    public void setRec_salary(String rec_salary) {
         this.rec_salary = rec_salary;
     }
 

@@ -45,4 +45,6 @@ public interface B_resumeMapper {
      */
     @Select("SELECT * FROM \"b_resume\" WHERE \"res_state\"=1")
     List<B_resume> findB_resumeByi_state(int res_u_id);
+    @Select("SELECT * FROM \"b_resume\" WHERE \"res_state\"=1 AND \"res_u_id\"=#{res_u_id}")
+    B_resume getinterviewresume(int i_u_id);
 }

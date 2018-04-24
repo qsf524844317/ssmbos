@@ -19,6 +19,13 @@ import java.util.List;
 public class B_resumeController {
   @Resource
   private B_resumeService b_resumeService;
+
+    /**
+     * 用户添加简历
+     * @param b_resume
+     * @param session
+     * @return
+     */
   @RequestMapping(value = "/addb_resume")
   public String addB_resume(B_resume b_resume, HttpSession session){
       try {
@@ -31,6 +38,13 @@ public class B_resumeController {
           return "login";
       }
   }
+
+    /**
+     * 用户投递简历
+     * @param res_id
+     * @param response
+     * @throws IOException
+     */
   @RequestMapping(value = "/sendb_resume")
   public void sendB_resume(int res_id, HttpServletResponse response) throws IOException {
       response.setContentType("text/html;charset=utf-8");
@@ -43,18 +57,30 @@ public class B_resumeController {
       }
   }
 
+    /**
+     * 用户查看自己的简历
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/seeb_resume")
-    public String seeB_resume(Model model,HttpSession session){
+    public String seeB_resume(HttpSession session){
         try{
             B_user b_user = (B_user) session.getAttribute("user");
             List<B_resume> b_resumes = b_resumeService.seeB_resume(b_user.getU_id());
-            model.addAttribute("b_resumes",b_resumes);
-            return "resume";
+            session.setAttribute("b_resumes",b_resumes);
+            return "myresume";
         }catch (Exception e){
             System.out.println(e);
             return "";
         }
     }
+
+    /**
+     * 管理员查看搜到的简历
+     * @param model
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/receiveb_resume")
     public String receiveB_resume(Model model,HttpSession session){
         try{

@@ -3,6 +3,9 @@ package com.qusf.service;
 import com.qusf.mapper.B_recruitMapper;
 import com.qusf.model.B_recruit;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,5 +25,14 @@ public class B_recruitService {
     public List<B_recruit> findAllB_recruit() {
         List<B_recruit> b_recruits= b_recruitMapper.findAllB_recruit();
         return b_recruits;
+    }
+
+    /**
+     * 管理员发布招聘信息
+     * @param b_recruit
+     */
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
+    public void sendB_recruit(B_recruit b_recruit){
+        b_recruitMapper.sendB_recruit(b_recruit);
     }
 }

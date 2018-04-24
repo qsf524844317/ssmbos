@@ -54,6 +54,13 @@ public class B_userController {
             return "regist";
         }
     }
+
+    /**
+     * 注册时检测用户名是否存在
+     * @param u_username
+     * @param response
+     * @throws IOException
+     */
     @RequestMapping(value = "/checkName")
     public void checkName(String u_username, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");

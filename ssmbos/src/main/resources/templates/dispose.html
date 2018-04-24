@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>面试时间</td>
+        <td>面试地点</td>
+        <td>面试人姓名</td>
+    </tr>
+    <tr th:each="interview:${b_interviews}" >
+        <td th:text="${interview.i_interviewtime}"></td>
+        <td th:text="${interview.i_interviewaddress}"></td>
+        <td th:text="${interview.i_res_name}"></td>
+        <td><a th:href="@{gotoaddemployee(i_u_id=${interview.i_u_id})}">录用</a></td>
+    </tr>
+</table>
+</body>
+</html>

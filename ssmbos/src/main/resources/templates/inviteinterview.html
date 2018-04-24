@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-    <form method="post" action="inviteuser">
+    <form action="inviteuser" method="get" >
         面试时间:<input type="date" name="i_interviewtime"><br>
         面试地点:<input type="text" name="i_interviewaddress"><br>
-        <input type="hidden" th:value="${res_u_id}" name="i_u_id">
+        <input type="hidden" th:value="${i_u_id}" name="i_u_id">
         <input type="hidden" th:value="${i_res_name}" name="i_res_name">
         <input type="submit" value="发送邀请">
     </form>

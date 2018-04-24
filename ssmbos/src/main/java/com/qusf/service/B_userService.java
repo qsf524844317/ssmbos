@@ -43,6 +43,11 @@ public class B_userService {
         }
     }
 
+    /**
+     * 注册时检查用户名是否存在
+     * @param u_username
+     * @return
+     */
     public boolean checkName(String u_username){
         List<B_user> users=t_userMapper.findUserByUsername(u_username);
         if (users.size()!=0){

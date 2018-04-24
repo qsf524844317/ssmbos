@@ -5,7 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="sendb_recruit" method="post">
+        职位名称:<input type="text" name="rec_p_name"><br>
+        职位要求:<input type="text" name="rec_require"><br>
+        薪资水平:<select name="rec_salary">
+                    <option value="3k-5k">3k-5k</option>
+                    <option value="5k-8k">5k-8k</option>
+                    <option value="8k-10k">8k-10k</option>
+                    <option value="8k-10k">10k-13k</option>
+                 </select><br>
+        招聘人数:<input type="text" name="rec_empnumber"><br>
+        联系方式:<input type="text" name="rec_contact">
+        <input type="submit" value="发布">
     </form>
 </body>
 </html>

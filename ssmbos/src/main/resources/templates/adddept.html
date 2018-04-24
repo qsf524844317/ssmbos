@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
+    <script>
+        $(function () {
+            $("#d_name").blur(function () {
+                var d_name=$("#d_name").val();
+                $.ajax({
+                    type:"post",
+                    url:"checkd_name",
+                    data:{"d_name":d_name},
+                    success:function (data) {
+                        $("#isuse").html(data)
+                        if (data=="部门已存在"){
+                            $("#isuse").css("color","red")
+                        }else {
+                            $("#isuse").css("color","green")
+                            $("#add").removeAttr("disabled")
+                        }
+                    }
+                })
+            });
+            $("#d_name").focus(function () {
+                $("#isuse").html("");
+                $("#add").attr("disabled","");
+            })
+        })
+    </script>
+</head>
+<body>
+    <form method="post" action="adddept">
+        部门名称:<input type="text" name="d_name" id="d_name"><span id="isuse"></span><br>
+        部门地址:<input type="text" name="d_address">
+        <input type="submit" value="添加" disabled="" id="add">
+    </form>
+</body>
+</html>

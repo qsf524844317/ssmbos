@@ -12,6 +12,7 @@
                 data:{"i_id":i_id},
                 success:function (data) {
                     alert(data);
+                    $("#sure").attr("disabled","")
                     location.reload();
                 }
             });
@@ -27,7 +28,12 @@
         <tr th:each="interview:${b_interviews}" >
             <td th:text="${interview.i_interviewtime}"></td>
             <td th:text="${interview.i_interviewaddress}"></td>
-            <td><input type="button" th:onclick="'javascript:acceptinterview(\''+${interview.i_id}+'\')'"></td>
+            <td th:if="${interview.i_state==0}">
+            <input type="button" id="sure" th:value="接受面试" th:onclick="'javascript:acceptinterview(\''+${interview.i_id}+'\')'"></td>
+            </td>
+            <td th:if="${interview.i_state==1}">
+                <input type="button"  th:value="已接受" disabled="">
+            </td>
         </tr>
     </table>
 </body>
