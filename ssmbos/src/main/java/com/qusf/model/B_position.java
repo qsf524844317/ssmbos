@@ -62,4 +62,6 @@ public class B_position implements Serializable {
     public void setP_salary(String p_salary) {
         this.p_salary = p_salary;
     }
+
+
 }

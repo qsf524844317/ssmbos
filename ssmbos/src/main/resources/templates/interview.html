@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>面试时间地点</td>
+            <td>确认面试</td>
+        </tr>
+        <tr th:each="app:${apps}">
+            <td th:text="${app.a_invitedetail}"></td>
+            <td><input type="button" th:value="确认面试" th:onclick="'javascript:deleteresume(\''+${resume.res_id}+'\')'"></td>
+        </tr>
+    </table>
+</body>
+</html>

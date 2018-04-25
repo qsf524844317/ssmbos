@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+    <form action="inviteinterview" method="post">
+        面试具体和地址时间<input type="text" name="a_invitedetail">
+        <input type="hidden" th:value="${a_id}" name="a_id">
+        <input type="submit" value="发送邀请">
+    </form>
+</body>
+</html>

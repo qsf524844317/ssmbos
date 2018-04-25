@@ -74,12 +74,31 @@
         <input type="submit" value="登录">
     </form>
 </div>
-<div style="height: 100px" data-options="region:'center'"></div>
+<div style="height: 100px" data-options="region:'center'">
+    <table>
+        <tr>
+            <td>招聘职位</td>
+            <td>岗位要求</td>
+            <td>招聘人数</td>
+            <td>职位薪资</td>
+            <td>联系人</td>
+            <td>申请职位</td>
+        </tr>
+        <tr th:each="recruit:${session.recruits}">
+            <td th:text="${recruit.p_name}"></td>
+            <td th:text="${recruit.rec_require}"></td>
+            <td th:text="${recruit.rec_empnumber}"></td>
+            <td th:text="${recruit.rec_salary}"></td>
+            <td th:text="${recruit.rec_contact}"></td>
+            <td><a th:href="@{chooseb_resume(a_rec_id=${recruit.rec_id})}">申请职位</a></td>
+        </tr>
+    </table>
+</div>
 <div style="width: 200px" data-options="region:'south'"></div>
 <div style="width: 100px" data-options="region:'east'">
     <a th:href="@{gotoaddresume}">添加简历</a><br>
     <a th:href="@{seeb_resume}">查看我的简历</a><br>
-    <a th:href="@{seeb_interview}">查看面试邀请</a>
+    <a th:href="@{seeinterview}">查看面试邀请</a>
 </div>
 </body>
 </html>

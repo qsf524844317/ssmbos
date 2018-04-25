@@ -2,11 +2,11 @@ package com.qusf.service;
 
 import com.qusf.mapper.B_recruitMapper;
 import com.qusf.model.B_recruit;
+import com.qusf.model.RecruitView;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -22,8 +22,8 @@ public class B_recruitService {
      * 查询所有的招聘信息返回给controller显示到首页
      * @return
      */
-    public List<B_recruit> findAllB_recruit() {
-        List<B_recruit> b_recruits= b_recruitMapper.findAllB_recruit();
+    public List<RecruitView> findAllB_recruit() {
+        List<RecruitView> b_recruits= b_recruitMapper.findAllB_recruit();
         return b_recruits;
     }
 

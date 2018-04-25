@@ -1,6 +1,7 @@
 package com.qusf.mapper;
 
 import com.qusf.model.B_recruit;
+import com.qusf.model.RecruitView;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -17,13 +18,13 @@ public interface B_recruitMapper {
      * 查询所有的招聘信息返回首页
      * @return
      */
-    @Select("SELECT * FROM \"b_recruit\"")
-    List<B_recruit> findAllB_recruit();
+    @Select("SELECT d.\"d_name\",p.\"p_name\",r.* FROM \"b_dept\" d ,\"b_position\" p ,\"b_recruit\" r WHERE r.\"rec_d_id\"=d.\"d_id\" AND p.\"p_id\"=r.\"rec_p_id\"")
+    List<RecruitView> findAllB_recruit();
 
     /**
      * 管理员发布招聘信息
      * @param b_recruit
      */
-    @Insert("INSERT INTO \"b_recruit\" VALUES (\"auto_recid\".nextval,#{rec_p_name},#{rec_require},#{rec_salary},#{rec_empnumber},#{rec_contact})")
+    @Insert("INSERT INTO \"b_recruit\" VALUES (\"auto_recid\".nextval,#{rec_require},#{rec_salary},#{rec_empnumber},#{rec_contact},#{rec_d_id},#{rec_p_id})")
     void sendB_recruit(B_recruit b_recruit);
 }

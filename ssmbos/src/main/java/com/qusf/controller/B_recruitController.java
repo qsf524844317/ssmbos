@@ -1,11 +1,15 @@
 package com.qusf.controller;
 
+import com.qusf.model.B_dept;
 import com.qusf.model.B_recruit;
+import com.qusf.service.B_deptService;
 import com.qusf.service.B_recruitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by SiFan on 2018/4/23.
@@ -14,7 +18,6 @@ import javax.annotation.Resource;
 public class B_recruitController {
     @Resource
     private B_recruitService b_recruitService;
-
     /**
      * 管理员发布招聘信息
      * @param b_recruit

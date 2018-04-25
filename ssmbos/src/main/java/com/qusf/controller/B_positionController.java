@@ -6,6 +6,7 @@ import com.qusf.service.B_deptService;
 import com.qusf.service.B_positionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -35,6 +36,12 @@ public class B_positionController {
             System.out.println(e);
             return "";
         }
-
+    }
+    @RequestMapping(value = "/selectposition")
+    @ResponseBody
+    public  List<B_position> selectPosition(int p_d_id){
+        System.out.println(p_d_id);
+        List<B_position> b_positions=b_positionService.selectPosition(p_d_id);
+        return b_positions;
     }
 }

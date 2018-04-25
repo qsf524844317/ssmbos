@@ -26,16 +26,6 @@ public class B_resumeService {
 
         b_resumeMapper.addB_resume(b_resume);
     }
-
-    /**
-     * 投递简历
-     * @param res_id
-     */
-    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
-    public void sendB_resume(int res_id) {
-        b_resumeMapper.sendB_resume(res_id);
-    }
-
     /**
      * 用户查看自己的简历
      * @param res_u_id
@@ -46,12 +36,12 @@ public class B_resumeService {
     }
 
     /**
-     * 管理员查看收到的简历
-     * @param res_u_id
+     * 管理员查看收到的简历的具体类容
+     * @param a_res_id
      * @return
      */
-    public List<B_resume> receiveB_resume(int res_u_id) {
-        return b_resumeMapper.findB_resumeByi_state(res_u_id);
+    public B_resume receiveB_resume(int a_res_id) {
+        return b_resumeMapper.findB_resumeByres_id(a_res_id);
     }
 
     public B_resume getinterviewresume(int i_u_id) {

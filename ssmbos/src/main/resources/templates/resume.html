@@ -5,11 +5,12 @@
     <title>Title</title>
     <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
     <script>
-        function sendresume(res_id) {
+        function sendresume(res_id,a_rec_id) {
+            alert(res_id+""+a_rec_id)
             $.ajax({
                 type:"post",
                 url:"sendb_resume",
-                data:{"res_id":res_id},
+                data:{"res_id":res_id,"rec_id":a_rec_id},
                 success:function (data) {
                     alert(data);
                     location.reload();
@@ -25,23 +26,16 @@
             <td>邮箱</td>
             <td>学历</td>
             <td>应聘职位</td>
-            <td>简历状态</td>
         </tr>
-        <tr th:each="resume:${b_resumes}">
+        <tr th:each="resume:${session.b_resumes}">
             <td th:text="${resume.res_name}"></td>
             <td th:text="${resume.res_phone}"></td>
             <td th:text="${resume.res_email}"></td>
             <td th:text="${resume.res_education}"></td>
             <td th:text="${resume.res_p_name}"></td>
-            <td th:if="${resume.res_state==1}" th:text="已投递"></td>
-            <td th:if="${resume.res_state==0}" th:text="未投递"></td>
-            <td th:if="${resume.res_state==0}">
-                <input type="button" value="投递" th:onclick="'javascript:sendresume(\''+${resume.res_id}+'\')'">
+            <td>
+                <input type="button" value="投递" th:onclick="'javascript:sendresume(\''+${resume.res_id}+'\',\''+${a_rec_id}+'\')'">
             </td>
-            <td th:if="${resume.res_state==1}">
-                <input type="button" value="投递" disabled="">
-            </td>
-            <td><input type="button" value=""></td>
         </tr>
     </table>
 </body>

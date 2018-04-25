@@ -18,22 +18,22 @@
     </script>
 </head>
 <body>
-<table>
-    <tr>
-        <td>姓名</td>
-        <td>邮箱</td>
-        <td>学历</td>
-        <td>应聘职位</td>
-        <td>简历状态</td>
-    </tr>
-    <tr th:each="resume:${b_resumes}">
-        <td th:text="${resume.res_name}"></td>
-        <td th:text="${resume.res_phone}"></td>
-        <td th:text="${resume.res_email}"></td>
-        <td th:text="${resume.res_education}"></td>
-        <td th:text="${resume.res_p_name}"></td>
-        <td><input type="button" value="删除" th:onclick="'javascript:deleteresume(\''+${resume.res_id}+'\')'"></td>
-    </tr>
-</table>
+        <table>
+            <tr>
+                <td>姓名</td>
+                <td>邮箱</td>
+                <td>学历</td>
+                <td>应聘职位</td>
+                <td>简历状态</td>
+            </tr>
+            <tr th:each="resume:${session.b_resumes}">
+                <td th:text="${resume.res_name}"></td>
+                <td th:text="${resume.res_phone}"></td>
+                <td th:text="${resume.res_email}"></td>
+                <td th:text="${resume.res_education}"></td>
+                <td th:text="${resume.res_p_name}"></td>
+                <td><input type="button" value="删除" th:onclick="'javascript:deleteresume(\''+${resume.res_id}+'\')'"></td>
+            </tr>
+        </table>
 </body>
 </html>

@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Title</title>
+    <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
+    <script>
+        function setSelectPosition() {
+            var p_d_id=$('#dept option:selected').val();
+            var optionJson=[];
+            $.ajax({
+                url: "selectposition",
+                type: "post",
+                data: {"p_d_id":p_d_id},
+                datatype: "json",
+                success:function(data){
+                    optionJson = data;
+                    var a=data.length;
+                    var selectObj=document.getElementById("position");
+                    selectObj.options.length=0;
+                    for(var i=0;i<data.length;i++){
+                        selectObj.add(new Option(optionJson[i].p_name,optionJson[i].p_id));
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 <body>
-    姓名:<input type="text" disabled="" th:value="${b_resume.res_name}"><br>
-    电话:<input type="text" disabled="" th:value="${b_resume.res_phone}"><br>
-    邮箱:<input type="text" disabled="" th:value="${b_resume.res_email}"><br>
-    学历:<input type="text" disabled="" th:value="${b_resume.res_education}"><br>
-    部门:<select>
+    <form method="post" action="saveemployee">
+        姓名:<input type="text" disabled="" th:value="${b_resume.res_name}" name="e_name"><br>
+        电话:<input type="text" disabled="" th:value="${b_resume.res_phone}" name="e_phone"><br>
+        邮箱:<input type="text" disabled="" th:value="${b_resume.res_email}" name="e_email"><br>
+        学历:<input type="text" disabled="" th:value="${b_resume.res_education}" name="res_education"><br>
+        部门:<select onchange="setSelectPosition()" id="dept" name="e_d_id" >
+                    <option>请选择部门</option>
+                    <option th:each="dept:${session.depts}" th:value="${dept.d_id}" th:text="${dept.d_name}" ></option>
+              </select><br>
+        职位:<select id="position" name="e_p_id">
+                  <option>请选择职位</option>
+            </select><br>
+        <input type="submit" value="录用">
+    </form>
 
-        </select>
 </body>
 </html>
