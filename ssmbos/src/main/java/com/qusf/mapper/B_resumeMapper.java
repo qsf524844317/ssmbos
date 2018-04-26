@@ -1,10 +1,7 @@
 package com.qusf.mapper;
 
 import com.qusf.model.B_resume;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,6 +34,6 @@ public interface B_resumeMapper {
      */
     @Select("SELECT * FROM \"b_resume\" WHERE \"res_id\"=#{res_u_id}")
     B_resume findB_resumeByres_id(int res_u_id);
-    @Select("SELECT * FROM \"b_resume\" WHERE \"res_state\"=1 AND \"res_u_id\"=#{res_u_id}")
-    B_resume getinterviewresume(int i_u_id);
+    @Delete("DELETE FROM \"b_resume\" WHERE \"res_id\"=#{param1}")
+    void deleteB_resumeByres_id(int res_id);
 }

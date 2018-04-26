@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
+    <script>
+        function deletetrain(t_id) {
+            $.ajax({
+                type:"post",
+                url:"deleteb_train",
+                data:{"t_id":t_id},
+                success:function (data) {
+                    alert(data)
+                    location.reload();
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <a th:href="@{gotoaddtrain}">添加培训</a>
+    <table>
+        <tr>
+            <td>培训主题</td>
+            <td>培训具体内容</td>
+            <td>培训地址</td>
+            <td>开始时间</td>
+            <td>结束时间</td>
+            <td>查看培训员工</td>
+            <td>添加培训员工</td>
+        </tr>
+        <tr th:each="train:${trains}">
+            <td th:text="${train.t_theme}"></td>
+            <td th:text="${train.t_details}"></td>
+            <td th:text="${train.t_address}"></td>
+            <td th:text="${train.t_start}"></td>
+            <td th:text="${train.t_end}"></td>
+            <td><a th:href="@{selecttrainemp(t_id=t_id)}">查看培训员工</a></td>
+            <td><a th:href="@{}">添加培训员工</a></td>
+            <td><input type="button" value="删除" th:onclick="'javascript:deletetrain(\''+${train.t_id}+'\')'"></td>
+        </tr>
+    </table>
+</body>
+</html>

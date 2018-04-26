@@ -44,7 +44,18 @@ public class B_resumeService {
         return b_resumeMapper.findB_resumeByres_id(a_res_id);
     }
 
-    public B_resume getinterviewresume(int i_u_id) {
-        return b_resumeMapper.getinterviewresume(i_u_id);
+    /**
+     * 删除简历
+     * @param res_id
+     * @return
+     */
+    public boolean deleteB_resumeByres_id(int res_id) {
+        try{
+            b_resumeMapper.deleteB_resumeByres_id(res_id);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
     }
 }

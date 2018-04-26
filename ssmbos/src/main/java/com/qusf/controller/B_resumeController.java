@@ -101,10 +101,27 @@ public class B_resumeController {
             return "index";
         }
     }
+
+    /**
+     * 根据简历id查询到对应简历
+     * @param a_res_id
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/getresume")
     public String getB_resume(int a_res_id ,Model model){
         B_resume b_resume=b_resumeService.receiveB_resume(a_res_id);
         model.addAttribute("resume",b_resume);
         return "resumeinfo";
+    }
+    @RequestMapping(value = "/deleteb_resume")
+    public void deleteB_resume(int res_id,HttpServletResponse response) throws IOException {
+        boolean flag=b_resumeService.deleteB_resumeByres_id(res_id);
+        response.setContentType("text/html;charset=utf-8");
+        if (flag){
+            response.getWriter().write("删除成功");
+        }else {
+            response.getWriter().write("删除失败");
+        }
     }
 }

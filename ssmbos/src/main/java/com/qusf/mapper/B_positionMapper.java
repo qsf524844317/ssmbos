@@ -1,6 +1,7 @@
 package com.qusf.mapper;
 
 import com.qusf.model.B_position;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -18,4 +19,8 @@ public interface B_positionMapper {
     void saveB_position(B_position b_position);
     @Select("SELECT * FROM \"b_position\" WHERE \"p_d_id\"=#{p_d_id}")
     List<B_position> findPositionByp_d_id(int p_d_id);
+    @Select("SELECT \"p_name\" FROM \"b_position\" WHERE \"p_id\"=#{param1}")
+    B_position findPositionByp_id(int rec_p_id);
+    @Delete("DELETE FROM \"b_position\" WHERE \"p_id\"=#{param1}")
+    void deleteB_position(int p_id);
 }

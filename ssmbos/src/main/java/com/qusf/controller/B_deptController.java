@@ -48,4 +48,19 @@ public class B_deptController {
             response.getWriter().write("部门已存在");
         }
     }
+
+    /**
+     * 删除员工
+     * @param d_id
+     */
+    @RequestMapping(value = "/deletedept")
+    public void deleteB_dept(int d_id,HttpServletResponse response) throws IOException {
+       boolean  flag=b_deptService.deleteB_dept(d_id);
+        response.setContentType("text/html;charset=utf-8");
+       if (flag){
+         response.getWriter().write("删除成功");
+       }else{
+           response.getWriter().write("部门下有职位不可删除");
+       }
+    }
 }

@@ -15,6 +15,7 @@ public class B_emp implements Serializable{
     private int e_p_id;
     private String e_joindate;
     private int e_dimission;
+    private String e_education;
 
     public B_emp() {
     }
@@ -101,5 +102,13 @@ public class B_emp implements Serializable{
 
     public void setE_dimission(int e_dimission) {
         this.e_dimission = e_dimission;
+    }
+
+    public String getE_education() {
+        return e_education;
+    }
+
+    public void setE_education(String e_education) {
+        this.e_education = e_education;
     }
 }

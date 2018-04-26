@@ -27,4 +27,13 @@ public interface B_recruitMapper {
      */
     @Insert("INSERT INTO \"b_recruit\" VALUES (\"auto_recid\".nextval,#{rec_require},#{rec_salary},#{rec_empnumber},#{rec_contact},#{rec_d_id},#{rec_p_id})")
     void sendB_recruit(B_recruit b_recruit);
+
+    /**
+     * 根据简历id查到简历
+     * @param a_rec_id
+     * @return
+     */
+    @Select("SELECT \"rec_d_id\",\"rec_p_id\" FROM \"b_recruit\" WHERE \"rec_id\"=#{param1}")
+    B_recruit findB_recruitByrec_id(int a_rec_id);
+
 }

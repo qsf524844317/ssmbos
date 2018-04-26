@@ -1,6 +1,7 @@
 package com.qusf.mapper;
 
 import com.qusf.model.B_dept;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -30,4 +31,8 @@ public interface B_deptMapper {
     List<B_dept> findB_deptByd_name(String d_name);
     @Select("SELECT * FROM \"b_dept\"")
     List<B_dept> findAllB_dept();
+    @Select("SELECT \"d_name\" FROM \"b_dept\" WHERE \"d_id\"=#{param1}")
+    B_dept findB_deptByd_id(int rec_d_id);
+    @Delete("DELETE FROM \"b_dept\" WHERE \"d_id\"=#{param1}")
+    void deleteB_dept(int d_id);
 }

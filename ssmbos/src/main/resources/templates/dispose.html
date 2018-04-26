@@ -7,15 +7,15 @@
 <body>
 <table>
     <tr>
-        <td>面试时间</td>
-        <td>面试地点</td>
-        <td>面试人姓名</td>
+        <td>申请编号</td>
+        <td>查看简历</td>
+        <td >面试结果</td>
     </tr>
-    <tr th:each="interview:${b_interviews}" >
-        <td th:text="${interview.i_interviewtime}"></td>
-        <td th:text="${interview.i_interviewaddress}"></td>
-        <td th:text="${interview.i_res_name}"></td>
-        <td><a th:href="@{gotoaddemployee(i_u_id=${interview.i_u_id})}">录用</a></td>
+    <tr th:each="b_application:${b_application}">
+        <td th:text="${b_application.a_id}"></td>
+        <td><a th:href="@{getresume(a_res_id=${b_application.a_res_id})}">查看简历</a></td>
+        <td th:if="${b_application.a_state==2}" th:text="已面试"></td>
+        <td><a th:href="@{gotoaddemployee(res_id=${b_application.a_res_id},a_rec_id=${b_application.a_rec_id})}">录用</a></td>
     </tr>
 </table>
 </body>

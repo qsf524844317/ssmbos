@@ -35,4 +35,8 @@ public class B_recruitService {
     public void sendB_recruit(B_recruit b_recruit){
         b_recruitMapper.sendB_recruit(b_recruit);
     }
+
+    public B_recruit findB_recruit(int a_rec_id) {
+        return b_recruitMapper.findB_recruitByrec_id(a_rec_id);
+    }
 }

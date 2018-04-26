@@ -5,6 +5,7 @@ import com.qusf.model.B_emp;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by SiFan on 2018/4/25.
@@ -13,7 +14,29 @@ import javax.annotation.Resource;
 public class B_empService {
     @Resource
     private B_empMapper b_empMapper;
+
+    /**
+     * 录用后保存员工信息
+     * @param b_emp
+     */
     public void saveB_emp(B_emp b_emp) {
         b_empMapper.saveB_emp(b_emp);
+    }
+
+    /**
+     * 获取所有员工信息
+     * @return
+     */
+    public List<B_emp> getAllEmp() {
+        return b_empMapper.findAllB_emp();
+    }
+
+    /**
+     * 根据员工id查询员工
+     * @param tr_e_id
+     * @return
+     */
+    public B_emp findB_empBye_id(int tr_e_id) {
+        return b_empMapper.findB_empBye_id(tr_e_id);
     }
 }
