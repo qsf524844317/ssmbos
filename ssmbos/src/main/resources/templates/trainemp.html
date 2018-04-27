@@ -36,8 +36,8 @@
             <td th:text="${train.t_address}"></td>
             <td th:text="${train.t_start}"></td>
             <td th:text="${train.t_end}"></td>
-            <td><a th:href="@{selecttrainemp(t_id=t_id)}">查看培训员工</a></td>
-            <td><a th:href="@{}">添加培训员工</a></td>
+            <td><a th:href="@{selecttrainemp(t_id=${train.t_id})}">查看培训员工</a></td>
+            <td><a th:href="@{addtrainemp(t_id=${train.t_id})}">添加培训员工</a></td>
             <td><input type="button" value="删除" th:onclick="'javascript:deletetrain(\''+${train.t_id}+'\')'"></td>
         </tr>
     </table>

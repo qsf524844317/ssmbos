@@ -59,7 +59,6 @@ public class B_positionController {
     @RequestMapping(value = "/selectposition")
     @ResponseBody
     public  List<B_position> selectPosition(int p_d_id){
-        System.out.println(p_d_id);
         List<B_position> b_positions=b_positionService.selectPosition(p_d_id);
         return b_positions;
     }

@@ -14,8 +14,22 @@ import java.util.List;
 public class B_trainingrecordService {
     @Resource
     private B_trainingrecordMapper b_trainingrecordMapper;
+
+    /**
+     * 查看培训员工信息
+     * @param t_id
+     * @return
+     */
     public List<B_trainingrecord> selecttrainemp(int t_id) {
         return b_trainingrecordMapper.findB_trainingrecordByt_id(t_id);
 
+    }
+
+    public void deleteBytr_e_id(int e_id) {
+        b_trainingrecordMapper.deleteBytr_e_id(e_id);
+    }
+
+    public void saveB_trainingrecord(int tr_e_id, int t_id) {
+        b_trainingrecordMapper.saveB_trainingrecord(tr_e_id,t_id);
     }
 }

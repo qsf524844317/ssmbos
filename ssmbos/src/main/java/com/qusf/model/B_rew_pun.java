@@ -10,6 +10,7 @@ public class B_rew_pun implements Serializable{
     private double re_money;
     private String re_reason;
     private int re_e_id;
+    private int re_type;
 
     public B_rew_pun() {
     }
@@ -51,5 +52,13 @@ public class B_rew_pun implements Serializable{
 
     public void setRe_e_id(int re_e_id) {
         this.re_e_id = re_e_id;
+    }
+
+    public int getRe_type() {
+        return re_type;
+    }
+
+    public void setRe_type(int re_type) {
+        this.re_type = re_type;
     }
 }

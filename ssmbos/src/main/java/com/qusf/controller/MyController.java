@@ -1,6 +1,7 @@
 package com.qusf.controller;
 
 import com.qusf.model.B_dept;;
+import com.qusf.model.B_emp;
 import com.qusf.model.B_train;
 import com.qusf.model.RecruitView;
 import com.qusf.service.B_deptService;
@@ -77,5 +78,27 @@ public class MyController{
     @RequestMapping(value = "/gotoaddtrain")
     public String addtrain(Model model){
         return "addtrain";
+    }
+
+    @RequestMapping(value = "/addtrainemp")
+
+    public String addTrainemp(Model model,int t_id){
+        List<B_emp> allEmp = b_empService.getAllEmp();
+        model.addAttribute("emps",allEmp);
+        model.addAttribute("t_id",t_id);
+        return "addtrainemp";
+    }
+    @RequestMapping(value = "/gotorewandpun")
+    public String gotoB_rew_pun(int e_id,Model model){
+        model.addAttribute("e_id",e_id);
+        return "rewpun";
+    }
+    @RequestMapping(value = "/transfer")
+    public String transfer(int e_id,Model model,HttpSession session){
+        List<B_dept> b_depts=b_deptService.getB_dept();
+        session.setAttribute("depts",b_depts);
+        System.out.println(e_id);
+        model.addAttribute("e_id",e_id);
+        return "transferemp";
     }
 }

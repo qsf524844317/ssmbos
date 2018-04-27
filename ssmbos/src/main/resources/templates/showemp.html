@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <form method="post" action="canceltrain">
         <table>
             <tr>
-                <td></td>
                 <td>员工编号</td>
                 <td>员工姓名</td>
                 <td>员工电话</td>
@@ -17,18 +15,16 @@
                 <td>所属职位</td>
             </tr>
             <tr th:each="emp:${emps}">
-                <td><input type="checkbox" th:value="${emp.e_id}" name="e_id"></td>
                 <td th:text="${emp.e_id}"></td>
                 <td th:text="${emp.e_name}"></td>
                 <td th:text="${emp.e_phone}"></td>
                 <td th:text="${emp.e_email}"></td>
                 <td th:text="${emp.d_name}"></td>
                 <td th:text="${emp.p_name}"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="取消培训资格"></td>
+                <td><a th:href="@{transfer(e_id=${emp.e_id})}">调职</a></td>
+                <td><input type="button" value="辞退"></td>
+                <td><a th:href="@{gotorewandpun(e_id=${emp.e_id})}">奖励/惩罚</a></td>
             </tr>
         </table>
-    </form>
 </body>
 </html>

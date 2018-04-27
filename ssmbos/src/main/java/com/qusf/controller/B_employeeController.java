@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,6 +52,12 @@ public class B_employeeController {
         model.addAttribute("recruit",b_recruit);
         return "addemployee";
     }
+
+    /**
+     * 保存录入的员工信息
+     * @param b_emp
+     * @return
+     */
     @RequestMapping(value = "/saveemployee")
     public String saveB_emp(B_emp b_emp){
         try {
@@ -73,5 +78,18 @@ public class B_employeeController {
         String emp = objectMapper.writeValueAsString(b_emps);
         System.out.println(emp);
         response.getWriter().write(emp);
+    }
+
+    @RequestMapping(value = "/empmanage")
+    public String empManger(Model model){
+        List<B_emp> b_emps = b_empService.getAllEmp();
+        model.addAttribute("emps",b_emps);
+        return "showemp";
+    }
+    @RequestMapping(value = "/updateemp")
+    public String updateemp(B_emp b_emp){
+        System.out.println(b_emp);
+        b_empService.updateemp(b_emp);
+        return "success";
     }
 }

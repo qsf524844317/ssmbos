@@ -13,6 +13,8 @@ public class B_emp implements Serializable{
     private String e_phone;
     private int e_d_id;
     private int e_p_id;
+    private String d_name;
+    private String p_name;
     private String e_joindate;
     private int e_dimission;
     private String e_education;
@@ -110,5 +112,39 @@ public class B_emp implements Serializable{
 
     public void setE_education(String e_education) {
         this.e_education = e_education;
+    }
+
+    public String getD_name() {
+        return d_name;
+    }
+
+    public void setD_name(String d_name) {
+        this.d_name = d_name;
+    }
+
+    public String getP_name() {
+        return p_name;
+    }
+
+    public void setP_name(String p_name) {
+        this.p_name = p_name;
+    }
+
+    @Override
+    public String toString() {
+        return "B_emp{" +
+                "e_id=" + e_id +
+                ", e_pass='" + e_pass + '\'' +
+                ", e_name='" + e_name + '\'' +
+                ", e_email='" + e_email + '\'' +
+                ", e_phone='" + e_phone + '\'' +
+                ", e_d_id=" + e_d_id +
+                ", e_p_id=" + e_p_id +
+                ", d_name='" + d_name + '\'' +
+                ", p_name='" + p_name + '\'' +
+                ", e_joindate='" + e_joindate + '\'' +
+                ", e_dimission=" + e_dimission +
+                ", e_education='" + e_education + '\'' +
+                '}';
     }
 }

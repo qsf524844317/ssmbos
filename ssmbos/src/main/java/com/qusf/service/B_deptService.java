@@ -56,6 +56,7 @@ public class B_deptService {
      * @param d_id
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
     public boolean deleteB_dept(int d_id) {
         List<B_position> b_positions = b_positionService.selectPosition(d_id);
         if (b_positions.size()==0){

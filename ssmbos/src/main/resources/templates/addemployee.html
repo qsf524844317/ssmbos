@@ -3,28 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
-    <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
-    <script>
-        function setSelectPosition() {
-            var p_d_id=$('#dept option:selected').val();
-            var optionJson=[];
-            $.ajax({
-                url: "selectposition",
-                type: "post",
-                data: {"p_d_id":p_d_id},
-                datatype: "json",
-                success:function(data){
-                    optionJson = data;
-                    var a=data.length;
-                    var selectObj=document.getElementById("position");
-                    selectObj.options.length=0;
-                    for(var i=0;i<data.length;i++){
-                        selectObj.add(new Option(optionJson[i].p_name,optionJson[i].p_id));
-                    }
-                }
-            });
-        }
-    </script>
 </head>
 <body>
     <form method="post" action="saveemployee">

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="saveb_rew_pun" method="post">
+        <select name="re_type">
+            <option th:value="1">奖励</option>
+            <option th:value="0">惩罚</option>
+        </select><br>
+        <input type="hidden" th:value="${e_id}" name="re_e_id">
+        金额:<input type="number" name="re_money"><br>
+        原因:<textarea name="re_reason"></textarea><br>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>
