@@ -16,7 +16,7 @@
             <td th:text="${apps.a_id}"></td>
             <td><a th:href="@{getresume(a_res_id=${apps.a_res_id})}">查看简历</a></td>
             <td th:if="${apps.a_state==0}"><a th:href="@{gotoinvite(a_id=${apps.a_id})}">邀请面试</a></td>
-            <td th:if="${apps.a_state==1}" th:text="已邀请"></td>
+            <td th:if="${apps.a_state==2}" ><span>已邀请</span></td>
         </tr>
     </table>
 </body>

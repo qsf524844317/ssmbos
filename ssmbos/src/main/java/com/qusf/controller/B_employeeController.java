@@ -92,4 +92,20 @@ public class B_employeeController {
         b_empService.updateemp(b_emp);
         return "success";
     }
+    @RequestMapping(value = "/getempbyposition")
+    public String getempbyposition(int p_id,Model model){
+        List<B_emp> b_emps=b_empService.getempbyposition(p_id);
+        model.addAttribute("emps",b_emps);
+        return "emps";
+    }
+    @RequestMapping(value = "/deleteemp")
+    public String deleteemp(B_emp b_emp){
+       boolean flag=b_empService.deleteempByeid(b_emp);
+       if (flag){
+           return "success";
+       }else {
+           return "";
+       }
+    }
+
 }

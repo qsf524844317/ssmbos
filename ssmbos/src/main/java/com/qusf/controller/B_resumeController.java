@@ -72,7 +72,6 @@ public class B_resumeController {
         try{
             B_user b_user = (B_user) session.getAttribute("user");
             List<B_resume> b_resumes = b_resumeService.seeB_resume(b_user.getU_id());
-            System.out.println(b_resumes.size());
             session.setAttribute("b_resumes",b_resumes);
             return "myresume";
         }catch (Exception e){
@@ -92,7 +91,6 @@ public class B_resumeController {
         try{
             B_user b_user = (B_user) session.getAttribute("user");
             List<B_resume> b_resumes = b_resumeService.seeB_resume(b_user.getU_id());
-            System.out.println(b_resumes.size());
             session.setAttribute("b_resumes",b_resumes);
             model.addAttribute("a_rec_id",a_rec_id);
             return "resume";

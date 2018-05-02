@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>职位名称</td>
+            <td>薪资</td>
+        </tr>
+        <tr th:each="position:${positions}">
+            <td th:text="${position.p_name}"></td>
+            <td th:text="${position.p_salary}"></td>
+            <td><a th:href="@{getempbyposition(p_id=${position.p_id})}">查看下属员工</a></td>
+        </tr>
+    </table>
+</body>
+</html>

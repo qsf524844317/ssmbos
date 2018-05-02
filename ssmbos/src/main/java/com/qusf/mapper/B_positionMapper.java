@@ -23,4 +23,7 @@ public interface B_positionMapper {
     B_position findPositionByp_id(int rec_p_id);
     @Delete("DELETE FROM \"b_position\" WHERE \"p_id\"=#{param1}")
     void deleteB_position(int p_id);
+    @Select("SELECT d.\"d_name\",p.* FROM \"b_dept\" d,\"b_position\" p WHERE d.\"d_id\"=p.\"p_d_id\"")
+    List<B_position> getAllB_position();
+
 }

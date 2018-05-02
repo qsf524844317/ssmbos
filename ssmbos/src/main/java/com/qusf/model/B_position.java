@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class B_position implements Serializable {
     private int p_id;
     private String p_name;
+    private String d_name;
     private int p_d_id;
     private int p_e_id;
     private String p_salary;
@@ -63,5 +64,11 @@ public class B_position implements Serializable {
         this.p_salary = p_salary;
     }
 
+    public String getD_name() {
+        return d_name;
+    }
 
+    public void setD_name(String d_name) {
+        this.d_name = d_name;
+    }
 }

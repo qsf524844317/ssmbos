@@ -47,4 +47,23 @@ public class B_empService {
     public void updateemp(B_emp b_emp) {
         b_empMapper.updateemp(b_emp);
     }
+
+    public List<B_emp> getempbyposition(int p_id) {
+        return b_empMapper.findB_empBye_pid(p_id);
+    }
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
+    public boolean deleteempByeid(B_emp b_emp) {
+        try{
+            b_empMapper.deleteemp(b_emp);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+
+    }
+
+    public B_emp getempByp_idAndp_pass(B_emp b_emp) {
+        return b_empMapper.getempByp_idAndp_pass(b_emp);
+    }
 }

@@ -5,9 +5,12 @@ import com.qusf.model.B_position;
 import com.qusf.service.B_deptService;
 import com.qusf.service.B_positionService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
@@ -62,8 +65,26 @@ public class B_positionController {
         List<B_position> b_positions=b_positionService.selectPosition(p_d_id);
         return b_positions;
     }
-    @RequestMapping(value = "/delete")
-    public void deleteB_position(int p_id){
+    @RequestMapping(value = "/getpositionbydid")
+    public String getpositionbydid(int d_id,Model model){
+        List<B_position> b_positions = b_positionService.selectPosition(d_id);
+        model.addAttribute("positions",b_positions);
+        return "position";
+    }
+    @RequestMapping(value = "/deleteposition")
+    public void deleteB_position(int p_id, HttpServletResponse response) throws IOException {
        boolean flag = b_positionService.deleteB_position(p_id);
+       response.setContentType("text/html;charset=utf-8");
+       if (flag){
+            response.getWriter().write("删除成功");
+       }else {
+           response.getWriter().write("职位下有员工,删除失败");
+       }
+    }
+    @RequestMapping(value = "/positionmanage")
+    public String getAllB_position(Model model){
+        List<B_position> b_positions=b_positionService.getAllB_position();
+        model.addAttribute("positions",b_positions);
+        return "editposition";
     }
 }

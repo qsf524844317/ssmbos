@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <table>
+            <tr>
+                <td>员工名称</td>
+                <td>员工邮箱</td>
+                <td>员工电话</td>
+                <td>所属部门</td>
+                <td>职位名称</td>
+                <td>加入日期</td>
+                <td>教育背景</td>
+            </tr>
+            <tr th:each="emp:${emps}">
+                <td th:text="${emp.e_name}"></td>
+                <td th:text="${emp.e_email}"></td>
+                <td th:text="${emp.e_phone}"></td>
+                <td th:text="${emp.d_name}"></td>
+                <td th:text="${emp.p_name}"></td>
+                <td th:text="${emp.e_joindate}"></td>
+                <td th:text="${emp.e_education}"></td>
+            </tr>
+        </table>
+</body>
+</html>

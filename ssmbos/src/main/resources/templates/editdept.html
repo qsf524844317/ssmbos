@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
+    <script>
+        function deletedept(d_id) {
+            $.ajax({
+                url: "deletedept",
+                type: "post",
+                data: {"d_id":d_id},
+                success:function(data){
+                    alert(data)
+                    location.reload();
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+        <a th:href="@{gotoadddept}">添加部门</a>
+        <table>
+            <tr>
+                <td>部门名称</td>
+                <td>部门地址</td>
+                <td>创建时间</td>
+            </tr>
+            <tr th:each="dept:${session.depts}">
+                <td th:text="${dept.d_name}"></td>
+                <td th:text="${dept.d_address}"></td>
+                <td th:text="${dept.d_createdate}"></td>
+                <td><a th:href="@{getpositionbydid(d_id=${dept.d_id})}">查看下属职位</a></td>
+                <td><input type="button" value="删除" th:onclick="'javascript:deletedept(\''+${dept.d_id}+'\')'"></td>
+            </tr>
+        </table>
+</body>
+</html>

@@ -39,7 +39,12 @@ public class B_positionService {
         List<B_emp> b_emps=b_empMapper.findB_empBye_pid(p_id);
         if (b_emps.size()==0){
             b_positionMapper.deleteB_position(p_id);
+            return true;
         }
         return false;
+    }
+
+    public List<B_position> getAllB_position() {
+        return b_positionMapper.getAllB_position();
     }
 }

@@ -13,6 +13,8 @@
                 <td>员工邮箱</td>
                 <td>所在部门</td>
                 <td>所属职位</td>
+                <td>是否离职</td>
+                <td>离职原因</td>
             </tr>
             <tr th:each="emp:${emps}">
                 <td th:text="${emp.e_id}"></td>
@@ -21,8 +23,12 @@
                 <td th:text="${emp.e_email}"></td>
                 <td th:text="${emp.d_name}"></td>
                 <td th:text="${emp.p_name}"></td>
+                <td th:if="${emp.e_dimission==1}" th:text="在职"></td>
+                <td th:if="${emp.e_dimission==0}" th:text="离职"></td>
+                <td th:if="${emp.e_dimission==0}" th:text="${emp.e_reason}"></td>
+                <td th:if="${emp.e_dimission==1}" th:text="无"></td>
                 <td><a th:href="@{transfer(e_id=${emp.e_id})}">调职</a></td>
-                <td><input type="button" value="辞退"></td>
+                <td><a th:href="@{gotodeleteemp(e_id=${emp.e_id})}">辞退</a></td>
                 <td><a th:href="@{gotorewandpun(e_id=${emp.e_id})}">奖励/惩罚</a></td>
             </tr>
         </table>

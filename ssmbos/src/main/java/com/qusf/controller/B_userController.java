@@ -23,7 +23,7 @@ public class B_userController {
      * @param session
      * @return
      */
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+//    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(B_user b_user, HttpSession session){
         B_user t_user1 = b_userService.login(b_user);
         //判断登录的类型 跳转到相应的界面

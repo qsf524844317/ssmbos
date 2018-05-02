@@ -1,13 +1,7 @@
 package com.qusf.controller;
 
-import com.qusf.model.B_dept;;
-import com.qusf.model.B_emp;
-import com.qusf.model.B_train;
-import com.qusf.model.RecruitView;
-import com.qusf.service.B_deptService;
-import com.qusf.service.B_empService;
-import com.qusf.service.B_recruitService;
-import com.qusf.service.B_trainService;
+import com.qusf.model.*;;
+import com.qusf.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +22,8 @@ public class MyController{
     private B_empService b_empService;
     @Resource
     private B_trainService b_trainService;
+    @Resource
+    private B_userService b_userService;
     /**
      * 访问直接查询所有招聘记录返回首页显示给游客
      * @param session
@@ -40,7 +36,11 @@ public class MyController{
         return "index";
     }
     @RequestMapping(value = "/gotoaddresume")
-    public String gotoaddresume(){
+    public String gotoaddresume(HttpSession session){
+        B_user user = (B_user) session.getAttribute("user");
+        if (user==null){
+            return "index";
+        }
         return "addresume";
     }
     @RequestMapping(value = "/sendbrecruit")
@@ -100,5 +100,14 @@ public class MyController{
         System.out.println(e_id);
         model.addAttribute("e_id",e_id);
         return "transferemp";
+    }
+    @RequestMapping(value = "/gotodeleteemp")
+    public String gotodeleteemp(int e_id,Model model){
+        model.addAttribute("e_id",e_id);
+        return "deleteempreason";
+    }
+    @RequestMapping(value = "/gotologin")
+    public String gotologin(){
+        return "login";
     }
 }
