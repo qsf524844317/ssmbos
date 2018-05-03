@@ -50,6 +50,6 @@ public interface B_empMapper{
     void updateemp(B_emp b_emp);
     @Update("UPDATE \"b_emp\" SET \"e_dimission\"=0,\"e_reason\"=#{e_reason} WHERE \"e_id\"=#{e_id}")
     void deleteemp(B_emp b_emp);
-    @Select("SELECT * FROM \"b_emp\" WHERE \"e_id\"=#{e_id} AND \"e_pass\"=#{e_pass} AND \"e_dimission\"=1;")
+    @Select("SELECT * FROM \"b_emp\" WHERE \"e_id\"=#{e_id} AND \"e_pass\"=#{e_pass} AND \"e_dimission\"=1")
     B_emp getempByp_idAndp_pass(B_emp b_emp);
 }

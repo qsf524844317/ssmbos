@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{js/jquery-1.8.3.js }"></script>
+    <script>
+        function deleterecruit(rec_id) {
+            $.ajax({
+                type:"post",
+                url:"deleteb_recruit",
+                data:{"rec_id":rec_id},
+                success:function (data) {
+                    alert(data);
+                    location.reload();
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <a th:href="@{sendbrecruit}">发布招聘信息 </a>
+    <table>
+        <tr>
+            <td>招聘要求</td>
+            <td>岗位薪资</td>
+            <td>招聘人数</td>
+            <td>联系方式</td>
+        </tr>
+        <tr th:each="recruit:${recruits}">
+            <td th:text="${recruit.rec_require}"></td>
+            <td th:text="${recruit.rec_salary}"></td>
+            <td th:text="${recruit.rec_empnumber}"></td>
+            <td th:text="${recruit.rec_contact}"></td>
+            <td><input type="button" value="删除" th:onclick="'javascript:deleterecruit(\''+${recruit.rec_id}+'\')'"></td>
+        </tr>
+    </table>
+</body>
+</html>

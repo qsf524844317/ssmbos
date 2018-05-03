@@ -8,13 +8,14 @@ public class B_attendance implements Serializable {
     private int a_id;
     private String a_working;
     private String a_gohome;
-    private int a_late;
-    private int a_early;
+    private long a_late;
+    private long a_early;
+    private int a_e_id;
 
     public B_attendance() {
     }
 
-    public B_attendance(int a_id, String a_working, String a_gohome, int a_late, int a_early) {
+    public B_attendance(int a_id, String a_working, String a_gohome, long a_late, long a_early) {
         this.a_id = a_id;
         this.a_working = a_working;
         this.a_gohome = a_gohome;
@@ -46,19 +47,29 @@ public class B_attendance implements Serializable {
         this.a_gohome = a_gohome;
     }
 
-    public int getA_late() {
+    public long getA_late() {
         return a_late;
     }
 
-    public void setA_late(int a_late) {
+    public void setA_late(long a_late) {
         this.a_late = a_late;
     }
 
-    public int getA_early() {
+    public long getA_early() {
         return a_early;
     }
 
-    public void setA_early(int a_early) {
+    public void setA_early(long a_early) {
         this.a_early = a_early;
     }
+
+    public int getA_e_id() {
+        return a_e_id;
+    }
+
+    public void setA_e_id(int a_e_id) {
+        this.a_e_id = a_e_id;
+    }
+
+
 }

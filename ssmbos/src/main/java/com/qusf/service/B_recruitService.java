@@ -39,4 +39,8 @@ public class B_recruitService {
     public B_recruit findB_recruit(int a_rec_id) {
         return b_recruitMapper.findB_recruitByrec_id(a_rec_id);
     }
+
+    public void deleteByrec_id(int rec_id){
+        b_recruitMapper.deleteByrec_id(rec_id);
+    }
 }

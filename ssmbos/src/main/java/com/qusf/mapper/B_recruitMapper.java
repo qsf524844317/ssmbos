@@ -35,5 +35,6 @@ public interface B_recruitMapper {
      */
     @Select("SELECT \"rec_d_id\",\"rec_p_id\" FROM \"b_recruit\" WHERE \"rec_id\"=#{param1}")
     B_recruit findB_recruitByrec_id(int a_rec_id);
-
+    @Select("DELETE FROM \"b_recruit\" WHERE \"rec_id\"=#{param1}")
+    void deleteByrec_id(int rec_id);
 }

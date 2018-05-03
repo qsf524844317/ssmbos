@@ -26,13 +26,13 @@ public class MyController{
     private B_userService b_userService;
     /**
      * 访问直接查询所有招聘记录返回首页显示给游客
-     * @param session
+     * @param model
      * @return
      */
     @RequestMapping(value = "/index")
-    public String index(HttpSession session){
+    public String index(Model model){
         List<RecruitView> recruits=b_recruitService.findAllB_recruit();
-        session.setAttribute("recruits",recruits);
+        model.addAttribute("recruits",recruits);
         return "index";
     }
     @RequestMapping(value = "/gotoaddresume")
@@ -109,5 +109,40 @@ public class MyController{
     @RequestMapping(value = "/gotologin")
     public String gotologin(){
         return "login";
+    }
+    @RequestMapping(value = "/login")
+    public String login(String username,String password,int type,HttpSession session){
+        if (type==1){
+            B_emp b_emp=new B_emp();
+            int e_id = Integer.parseInt(username);
+            b_emp.setE_id(e_id);
+            b_emp.setE_pass(password);
+            B_emp emp = b_empService.getempByp_idAndp_pass(b_emp);
+            if (emp!=null){
+                session.setAttribute("emp",emp);
+                return "empview";
+            }else {
+                return "index";
+            }
+        }else {
+            System.out.println(type);
+            B_user b_user=new B_user();
+            b_user.setU_username(username);
+            b_user.setU_passworld(password);
+            B_user user = b_userService.login(b_user);
+            if (user!=null&&user.getU_type()==0){
+                session.setAttribute("user",user);
+                return "userview";
+            }else if (user!=null&&user.getU_type()==2){
+                session.setAttribute("admin",user);
+                return  "success";
+            }else {
+                return "login";
+            }
+        }
+    }
+    @RequestMapping("backempview")
+    public String empview(){
+        return "empview";
     }
 }
