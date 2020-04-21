@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+    </style>
 </head>
 <body>
     <form method="post"  action="savetrain">
@@ -10,7 +16,7 @@
         培训内容:<input type="text" name="t_details"><br>
         培训地点:<input type="text" name="t_address"><br>
         培训开始时间:<input type="datetime-local" name="t_start"><br>
-        培训结束时间:<input type="datetime-local" name="t_end"><br>
+        培训结束时间:<input type="datetime-local" name="t_end"><span th:text="${error}" style="color: red"></span><br>
         <input type="submit" value="保存">
     </form>
 </body>

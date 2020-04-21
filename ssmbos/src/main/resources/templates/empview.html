@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+    </style>
 </head>
 <body>
-    <a th:href="@{clockin}">打卡</a>
-    <a href="">查看薪资</a>
-    <a href="">查看考勤</a>
+    <a th:href="@{goworkingclockin}">上班打卡</a>
+    <a th:href="@{gohomeclockin}">下班打卡</a>
+    <a th:href="@{selectsalary}">查看薪资</a>
+    <a th:href="@{selectdept}">公司部门</a>
+    <a th:href="@{selecttrain}">我的培训</a>
+    <a th:href="@{selectattendance}">查看上月考勤</a>
+    <a th:href="@{selectrewpun}">查看奖惩</a>
 </body>
 </html>

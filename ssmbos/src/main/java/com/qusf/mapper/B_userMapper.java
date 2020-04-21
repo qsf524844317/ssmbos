@@ -34,6 +34,6 @@ public interface B_userMapper {
      * @param u_username
      * @return
      */
-    @Select("SELECT * FROM \"b_user\" WHERE \"u_username\"=#{u_username}")
+    @Select("SELECT * FROM \"b_user\" WHERE \"u_username\"=#{param1}")
     List<B_user> findUserByUsername(String u_username);
 }

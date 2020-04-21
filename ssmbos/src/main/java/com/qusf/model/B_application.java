@@ -12,6 +12,7 @@ public class B_application implements Serializable{
     private int a_state;
     private int a_invitestate;
     private String a_invitedetail;
+    private String res_name;
 
     public B_application() {
     }
@@ -71,5 +72,13 @@ public class B_application implements Serializable{
 
     public void setA_invitedetail(String a_invitedetail) {
         this.a_invitedetail = a_invitedetail;
+    }
+
+    public String getRes_name() {
+        return res_name;
+    }
+
+    public void setRes_name(String res_name) {
+        this.res_name = res_name;
     }
 }

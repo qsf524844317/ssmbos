@@ -3,15 +3,32 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+            text-align: center;
+        }
+        div{
+            margin-top: 200px;
+        }
+    </style>
 </head>
+
 <body>
-    <form action="addb_resume" method="post">
-        姓名:<input type="text" name="res_name"/><br/>
-        电话:<input type="text" name="res_phone"/><br/>
-        邮箱:<input type="email" name="res_email"/><br/>
-        学历:<input type="text" name="res_education"/><br/>
-        应聘职位:<input type="text" name="res_p_name"/><br/>
-        <input type="submit" value="保存" />
-    </form>
+    <div>
+        <form action="addb_resume" method="post">
+            姓名:<input type="text" name="res_name"/><br/>
+            电话:<input type="text" name="res_phone" style="margin-top: 10px"/><br/>
+            邮箱:<input type="email" name="res_email" style="margin-top: 10px"/><br/>
+            学历:<input type="text" name="res_education" style="margin-top: 10px"/><br/>
+            <span style="position: absolute;left: 547px;margin-top: 10px">工作经验:</span>
+            <textarea name="res_workexperience" style="position: absolute;left: 614px;margin-top: 10px"></textarea><br>
+            <span style="position: absolute;left: 547px; margin-top:30px">项目经验:</span>
+            <textarea name="res_projectexperience" style="position: absolute;left: 614px;margin-top: 30px"></textarea><br>
+            <span style="position: absolute;left: 547px; margin-top:50px">应聘职位:</span><input type="text" name="res_p_name" style=";position: absolute;left:614px;margin-top: 50px"/><br/>
+            <input type="submit" value="保存" style="margin-top: 60px"/>
+        </form>
+    </div>
 </body>
 </html>

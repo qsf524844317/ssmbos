@@ -6,7 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by SiFan on 2018/4/24.
@@ -62,5 +64,11 @@ public class B_deptController {
        }else{
            response.getWriter().write("部门下有职位不可删除");
        }
+    }
+    @RequestMapping(value = "/selectdept")
+    public String selectdept(HttpSession session){
+        List<B_dept> b_depts=b_deptService.getB_dept();
+        session.setAttribute("depts",b_depts);
+        return "showdept";
     }
 }

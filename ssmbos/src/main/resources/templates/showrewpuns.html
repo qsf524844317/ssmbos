@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
+    <script>
+        function deleterew_pun(rp_id) {
+            $.ajax({
+                url: "deleteb_rew_pun",
+                type: "post",
+                data: {"rp_id":rp_id},
+                success:function(data){
+                    alert(data)
+                    location.reload();
+                }
+            });
+        }
+    </script>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>惩罚人/奖励人</td>
+            <td>惩罚原因/奖励原因</td>
+            <td>惩罚金额/奖励金额</td>
+            <td>类型</td>
+        </tr>
+        <tr th:each="rew_pun:${rew_puns}">
+            <td th:text="${rew_pun.e_name}"></td>
+            <td th:text="${rew_pun.re_reason}"></td>
+            <td th:text="${rew_pun.re_money}"></td>
+            <td th:if="${rew_pun.re_type==0}" th:text="惩罚"></td>
+            <td th:if="${rew_pun.re_type==1}" th:text="奖励"></td>
+            <td><input type="button" value="删除"  th:onclick="'javascript:deleterew_pun(\''+${rew_pun.rp_id}+'\')'"></td>
+        </tr>
+    </table>
+</body>
+</html>

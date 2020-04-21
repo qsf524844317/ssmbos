@@ -27,7 +27,7 @@ public interface B_applicationMapper {
      * 管理员查看收到的职位申请
      * @return
      */
-    @Select("SELECT * FROM \"b_application\"")
+    @Select("SELECT res.\"res_name\",a.* FROM \"b_application\" a,\"b_resume\" res  WHERE res.\"res_id\"=a.\"a_res_id\"")
     List<B_application> findB_application();
 
     /**
@@ -57,7 +57,8 @@ public interface B_applicationMapper {
      * 管理员查看确定面试的记录
      * @return
      */
-    @Select("SELECT * FROM \"b_application\" WHERE \"a_state\"=2")
+    @Select("SELECT res.\"res_name\",a.* FROM \"b_application\" a,\"b_resume\" res  WHERE res.\"res_id\"=a.\"a_res_id\" AND \"a_state\"=2")
     List<B_application> findB_applicationBya_state();
-
+    @Update("UPDATE \"b_application\" SET \"a_state\"=3 WHERE \"a_id\"=#{param1}")
+    void acceptemp(int a_id);
 }

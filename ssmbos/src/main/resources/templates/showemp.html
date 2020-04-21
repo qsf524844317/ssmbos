@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+    </style>
 </head>
 <body>
         <table>
@@ -30,6 +36,7 @@
                 <td><a th:href="@{transfer(e_id=${emp.e_id})}">调职</a></td>
                 <td><a th:href="@{gotodeleteemp(e_id=${emp.e_id})}">辞退</a></td>
                 <td><a th:href="@{gotorewandpun(e_id=${emp.e_id})}">奖励/惩罚</a></td>
+                <td><a th:href="@{selectb_attendance(e_id=${emp.e_id})}">查看上月考勤</a></td>
             </tr>
         </table>
 </body>

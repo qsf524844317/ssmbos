@@ -51,8 +51,8 @@ public class B_userService {
     public boolean checkName(String u_username){
         List<B_user> users=t_userMapper.findUserByUsername(u_username);
         if (users.size()!=0){
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }

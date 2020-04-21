@@ -18,7 +18,7 @@
                             $("#isuse").css("color","red")
                         }else {
                             $("#isuse").css("color","green")
-                            $("#add").removeAttr("disabled")
+                            $("#add").removeAttr("disabled");
                         }
                     }
                 })
@@ -29,12 +29,26 @@
             })
         })
     </script>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+        div{
+            margin-left: 590px;
+            margin-top: 225px;
+        }
+    </style>
 </head>
 <body>
-    <form method="post" action="adddept">
-        部门名称:<input type="text" name="d_name" id="d_name"><span id="isuse"></span><br>
-        部门地址:<input type="text" name="d_address">
-        <input type="submit" value="添加" disabled="" id="add">
-    </form>
+    <div>
+        <form method="post" action="adddept">
+            部门名称:<input type="text" name="d_name" id="d_name"><br>
+            <span id="isuse" style="margin-left: 70px"></span><br>
+            部门地址:<input type="text" name="d_address"><br>
+            <input type="submit" value="添加" disabled="" id="add" style="margin-top: 10px">
+            <input type="button" value="返回" style="margin-top:10px;margin-left: 150px">
+        </form>
+    </div>
 </body>
 </html>

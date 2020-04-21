@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+        div{
+            margin-left: 590px;
+            margin-top: 225px;
+        }
+    </style>
 </head>
 <body>
-    <form method="post" action="saveemployee">
-        姓名:<input type="text" th:readonly="true" th:value="${resume.res_name}" name="e_name"><br>
-        电话:<input type="text"  th:readonly="true" th:value="${resume.res_phone}" name="e_phone"><br>
-        邮箱:<input type="text"  th:readonly="true" th:value="${resume.res_email}" name="e_email"><br>
-        学历:<input type="text" th:readonly="true" th:value="${resume.res_education}" name="e_education"><br>
-        部门:<input type="text" th:readonly="true" th:value="${d_name}">
-            <input type="hidden"  th:value="${recruit.rec_d_id}" name="e_d_id"><br>
-        职位:<input type="text" th:readonly="true" th:value="${p_name}">
+    <div>
+        <form method="post" action="saveemployee">
+            姓名:<input type="text" th:readonly="true" th:value="${resume.res_name}" name="e_name" ><br>
+            电话:<input type="text"  th:readonly="true" th:value="${resume.res_phone}" name="e_phone" style="margin-top: 10px"><br>
+            邮箱:<input type="text"  th:readonly="true" th:value="${resume.res_email}" name="e_email" style="margin-top: 10px"><br>
+            学历:<input type="text" th:readonly="true" th:value="${resume.res_education}" name="e_education" style="margin-top: 10px"><br>
+            部门:<input type="text" th:readonly="true" th:value="${d_name}" style="margin-top: 10px">
+            <input type="hidden"  th:value="${recruit.rec_d_id}" name="e_d_id" style="margin-top: 10px"><br>
+            职位:<input type="text" th:readonly="true" th:value="${p_name}" style="margin-top: 10px">
             <input type="hidden" th:value="${recruit.rec_p_id}" name="e_p_id"><br>
             <input type="hidden" name="e_pass"  value="147258963">
-
-
-
-
-
-        <!--部门:<select onchange="setSelectPosition()" id="dept" name="e_d_id" >-->
-                    <!--<option>请选择部门</option>-->
-                    <!--<option th:each="dept:${session.depts}" th:value="${dept.d_id}" th:text="${dept.d_name}" ></option>-->
-              <!--</select><br>-->
-        <!--职位:<select id="position" name="e_p_id">-->
-                  <!--<option>请选择职位</option>-->
-            <!--</select><br>-->
-        <input type="submit" value="录用">
-    </form>
-
+            <input type="hidden" name="a_id"  th:value="${a_id}">
+            <input type="submit" value="录用" style="margin-top: 10px">
+        </form>
+    </div>
 </body>
 </html>

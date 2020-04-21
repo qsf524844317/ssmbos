@@ -11,17 +11,43 @@
                 url:"checkName",
                 data:"u_username="+$("#u_username").val(),
                 success:function (data) {
-                    $("#isuse").innerHTML(data);
+                    $("#isuse").html(data)
+                    if (data=="用户名已存在"){
+                        $("#isuse").css("color","red")
+                    }else {
+                        $("#isuse").css("color","green")
+                    }
                 }
             });
         }
+        function clearall() {
+            $("#isuse").html("");
+        }
+        
+        function gotoindex() {
+            window.location.href="index";
+        }
     </script>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+            text-align: center;
+        }
+        div{
+            margin-top: 200px;
+        }
+    </style>
 </head>
 <body>
-    <form method="post" action="regist">
-        账号:<input type="text" onblur="checkname()" id="u_username" name="u_username" /><span id="isuse"></span><br/>
-        密码<input type="password" id="u_passworld" name="u_passworld" /><br/>
-        <input type="submit" value="注册">
-    </form>
+    <div>
+        <form method="post" action="regist">
+            账号:<input type="text" onblur="checkname()" id="u_username" name="u_username" onfocus="clearall()" /><br>
+            <span id="isuse" style="position: absolute;left: 614px"></span><br/>
+            密码:<input type="password" id="u_passworld" name="u_passworld"  style="margin-top:0px"/><br/>
+            <input type="submit" value="注册" style="position:absolute;left:614px;margin-top: 20px;">
+            <input type="button" value="返回" style="margin-top: 20px ;margin-left: 165px" th:onclick="'javascript:gotoindex()'">
+        </form>
+    </div>
 </body>
 </html>

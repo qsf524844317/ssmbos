@@ -18,28 +18,6 @@ public class B_userController {
     private B_userService b_userService;
 
     /**
-     * 登录
-     * @param b_user
-     * @param session
-     * @return
-     */
-//    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String login(B_user b_user, HttpSession session){
-        B_user t_user1 = b_userService.login(b_user);
-        //判断登录的类型 跳转到相应的界面
-        if (t_user1!=null&& t_user1.getU_type()==0){
-            //游客
-            session.setAttribute("user",t_user1);
-            return "index";
-        }else if (t_user1!=null&& t_user1.getU_type()==1){
-            //管理员
-            session.setAttribute("user",t_user1);
-            return "success";
-        }
-        return "index";
-    }
-
-    /**
      * 注册方法
      * 只能注册为游客
      * @param b_user

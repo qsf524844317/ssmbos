@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>上班时间</td>
+            <td>下班时间</td>
+            <td>迟到时间</td>
+            <td>早退时间</td>
+        </tr>
+        <tr th:each="attendance:${attendances}">
+            <td th:text="${attendance.a_working}"></td>
+            <td th:text="${attendance.a_gohome}"></td>
+            <td th:text="${attendance.a_late}"></td>
+            <td th:text="${attendance.a_early}"></td>
+        </tr>
+    </table>
+</body>
+</html>

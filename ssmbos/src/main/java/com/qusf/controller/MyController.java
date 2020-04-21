@@ -1,6 +1,6 @@
 package com.qusf.controller;
 
-import com.qusf.model.*;;
+import com.qusf.model.*;
 import com.qusf.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +24,8 @@ public class MyController{
     private B_trainService b_trainService;
     @Resource
     private B_userService b_userService;
+    @Resource
+    private B_rew_punService b_rew_punService;
     /**
      * 访问直接查询所有招聘记录返回首页显示给游客
      * @param model
@@ -39,7 +41,7 @@ public class MyController{
     public String gotoaddresume(HttpSession session){
         B_user user = (B_user) session.getAttribute("user");
         if (user==null){
-            return "index";
+            return "login";
         }
         return "addresume";
     }
@@ -81,7 +83,6 @@ public class MyController{
     }
 
     @RequestMapping(value = "/addtrainemp")
-
     public String addTrainemp(Model model,int t_id){
         List<B_emp> allEmp = b_empService.getAllEmp();
         model.addAttribute("emps",allEmp);
@@ -111,7 +112,7 @@ public class MyController{
         return "login";
     }
     @RequestMapping(value = "/login")
-    public String login(String username,String password,int type,HttpSession session){
+    public String login(String username,String password,int type,HttpSession session,Model model){
         if (type==1){
             B_emp b_emp=new B_emp();
             int e_id = Integer.parseInt(username);
@@ -122,7 +123,7 @@ public class MyController{
                 session.setAttribute("emp",emp);
                 return "empview";
             }else {
-                return "index";
+                return "login";
             }
         }else {
             System.out.println(type);
@@ -131,8 +132,10 @@ public class MyController{
             b_user.setU_passworld(password);
             B_user user = b_userService.login(b_user);
             if (user!=null&&user.getU_type()==0){
+                List<RecruitView> recruits=b_recruitService.findAllB_recruit();
+                model.addAttribute("recruits",recruits);
                 session.setAttribute("user",user);
-                return "userview";
+                return "index";
             }else if (user!=null&&user.getU_type()==2){
                 session.setAttribute("admin",user);
                 return  "success";
@@ -144,5 +147,20 @@ public class MyController{
     @RequestMapping("backempview")
     public String empview(){
         return "empview";
+    }
+    @RequestMapping(value = "/rewpunmanage")
+    public String rewpunmanage(Model model){
+        List<B_rew_pun> b_rew_puns=b_rew_punService.getAllrewpun();
+        model.addAttribute("rew_puns",b_rew_puns);
+        return "showrewpuns";
+    }
+    @RequestMapping(value = "/salarymanage")
+    public String salarymanage(){
+        return "editsalary";
+    }
+
+    @RequestMapping(value = "/gotoregist")
+    public String gotoregist(){
+        return "regist";
     }
 }

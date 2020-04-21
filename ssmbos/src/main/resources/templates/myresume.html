@@ -17,24 +17,43 @@
             });
         }
     </script>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+        div{
+            margin-left: 360px;
+            margin-top: 100px;
+        }
+    </style>
 </head>
 <body>
-        <table>
+    <div>
+        <a th:href="@{gotoaddresume}">添加简历</a>
+        <table border="1px" cellspacing="0px">
             <tr>
                 <td>姓名</td>
+                <td>电话</td>
                 <td>邮箱</td>
                 <td>学历</td>
+                <td>工作经验</td>
+                <td>项目经验</td>
                 <td>应聘职位</td>
-                <td>简历状态</td>
+                <td>删除</td>
             </tr>
             <tr th:each="resume:${session.b_resumes}">
                 <td th:text="${resume.res_name}"></td>
                 <td th:text="${resume.res_phone}"></td>
                 <td th:text="${resume.res_email}"></td>
                 <td th:text="${resume.res_education}"></td>
+                <td th:text="${resume.res_workexperience}"></td>
+                <td th:text="${resume.res_projectexperience}"></td>
                 <td th:text="${resume.res_p_name}"></td>
                 <td><input type="button" value="删除" th:onclick="'javascript:deleteresume(\''+${resume.res_id}+'\')'"></td>
             </tr>
         </table>
+    </div>
+
 </body>
 </html>

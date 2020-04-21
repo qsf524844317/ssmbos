@@ -1,20 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Title</title>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+            text-align: center;
+        }
+        div{
+            margin-top: 200px;
+        }
+    </style>
 </head>
 <body>
-    <form action="login" method="post">
-        用户名:<input type="text" name="username"><br>
-        密码:<input type="password" name="password"><br>
-        <select name="type">
-            <option value="0">游客</option>
-            <option value="1">用户</option>
-            <option value="2">管理员</option>
-        </select><br>
-        <input type="submit">
-    </form>
+    <div >
+        <form action="login" method="post">
+            账号:<input type="text" name="username"><br>
+            密码:<input type="password" name="password" style="margin-top: 10px"><br>
+            <span style="position: absolute;left: 579px;margin-top:10px">类型:</span><select name="type" style="position: absolute;left: 614px;margin-top:10px">
+                <option value="0">游客</option>
+                <option value="1">员工</option>
+                <option value="2">管理员</option>
+            </select><br>
+
+            <input type="submit" value="登录" style="position:absolute;left:579px;margin-top: 20px;">
+            <input type="button" value="返回" style="margin-top: 20px ;margin-left: 165px" th:onclick="'javascript:gotoindex()'">
+        </form><br>
+        <a th:href="@{gotoregist}">还没有账号?</a>
+    </div>
 
 </body>
 </html>

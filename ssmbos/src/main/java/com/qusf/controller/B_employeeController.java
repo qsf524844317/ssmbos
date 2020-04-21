@@ -28,6 +28,8 @@ public class B_employeeController {
     private B_recruitService b_recruitService;
     @Resource
     private B_positionService b_positionService;
+    @Resource
+    private B_applicationService b_applicationService;
 
     /**
      * 添加员工
@@ -39,7 +41,7 @@ public class B_employeeController {
      * @throws Exception
      */
     @RequestMapping(value = "/gotoaddemployee")
-    public String gotoaddB_employee(int res_id,int a_rec_id, Model model, HttpSession session) throws Exception{
+    public String gotoaddB_employee(int res_id,int a_rec_id, Model model, HttpSession session,int a_id) throws Exception{
         List<B_dept> b_depts=b_deptService.getB_dept();
         session.setAttribute("depts",b_depts);
         B_recruit b_recruit=b_recruitService.findB_recruit(a_rec_id);
@@ -50,6 +52,7 @@ public class B_employeeController {
         model.addAttribute("p_name",b_position.getP_name());
         model.addAttribute("d_name",b_dept.getD_name());
         model.addAttribute("recruit",b_recruit);
+        model.addAttribute("a_id",a_id);
         return "addemployee";
     }
 
@@ -59,9 +62,10 @@ public class B_employeeController {
      * @return
      */
     @RequestMapping(value = "/saveemployee")
-    public String saveB_emp(B_emp b_emp){
+    public String saveB_emp(B_emp b_emp,int a_id){
         try {
             b_empService.saveB_emp(b_emp);
+            b_applicationService.acceptemp(a_id);
             return "success";
         }catch (Exception e){
             System.out.println(e);
@@ -76,7 +80,6 @@ public class B_employeeController {
         List<B_emp> b_emps=b_empService.getAllEmp();
         ObjectMapper objectMapper=new ObjectMapper();
         String emp = objectMapper.writeValueAsString(b_emps);
-        System.out.println(emp);
         response.getWriter().write(emp);
     }
 

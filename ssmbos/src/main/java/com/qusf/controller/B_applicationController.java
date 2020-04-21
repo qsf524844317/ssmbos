@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -60,10 +59,14 @@ public class B_applicationController {
     @RequestMapping(value = "/seeinterview")
     public String seeinterview(HttpSession session,Model model){
         B_user user = (B_user) session.getAttribute("user");
-        List<B_application> b_applications = b_applicationService.seeinterview(user.getU_id());
-        System.out.println(b_applications.size());
-        model.addAttribute("apps",b_applications);
-        return "interview";
+        if (user==null){
+            return "login";
+        }else {
+            List<B_application> b_applications = b_applicationService.seeinterview(user.getU_id());
+            System.out.println(b_applications.size());
+            model.addAttribute("apps",b_applications);
+            return "interview";
+        }
     }
     @RequestMapping(value = "/acceptInvite",method = RequestMethod.POST)
     public void acceptInvite(int a_id, HttpServletResponse response) throws IOException {
@@ -85,6 +88,6 @@ public class B_applicationController {
     public String disposeB_application(Model model){
         List<B_application> b_application = b_applicationService.findInterviewB_application();
         model.addAttribute("b_application",b_application);
-        return "dispose.html";
+        return "dispose";
     }
 }

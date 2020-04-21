@@ -14,6 +14,8 @@ public class B_resume implements Serializable {
     private String res_education;
     private String res_p_name;
     private int res_state;
+    private String res_workexperience;
+    private String res_projectexperience;
 
     public B_resume() {
     }
@@ -91,5 +93,21 @@ public class B_resume implements Serializable {
 
     public void setRes_state(int res_state) {
         this.res_state = res_state;
+    }
+
+    public String getRes_workexperience() {
+        return res_workexperience;
+    }
+
+    public void setRes_workexperience(String res_workexperience) {
+        this.res_workexperience = res_workexperience;
+    }
+
+    public String getRes_projectexperience() {
+        return res_projectexperience;
+    }
+
+    public void setRes_projectexperience(String res_projectexperience) {
+        this.res_projectexperience = res_projectexperience;
     }
 }

@@ -17,7 +17,7 @@ public interface B_resumeMapper {
      * @param b_resume
      */
     @Insert("INSERT INTO \"b_resume\"" +
-            " VALUES\n(\"auto_resid\".nextval,#{res_name},#{res_phone},#{res_email},#{res_u_id},#{res_education},#{res_p_name},0)")
+            " VALUES\n(\"auto_resid\".nextval,#{res_name},#{res_phone},#{res_email},#{res_u_id},#{res_education},#{res_p_name},0,#{res_workexperience},#{res_projectexperience})")
     void addB_resume(B_resume b_resume) ;
     /**
      * 用户查看自己的简历

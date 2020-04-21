@@ -13,6 +13,8 @@ public class B_recruit implements Serializable{
     private String rec_contact;
     private int rec_d_id;
     private int rec_p_id;
+    private String d_name;
+    private String p_name;
 
     public B_recruit() {
     }
@@ -81,5 +83,21 @@ public class B_recruit implements Serializable{
 
     public void setRec_p_id(int rec_p_id) {
         this.rec_p_id = rec_p_id;
+    }
+
+    public String getD_name() {
+        return d_name;
+    }
+
+    public void setD_name(String d_name) {
+        this.d_name = d_name;
+    }
+
+    public String getP_name() {
+        return p_name;
+    }
+
+    public void setP_name(String p_name) {
+        this.p_name = p_name;
     }
 }

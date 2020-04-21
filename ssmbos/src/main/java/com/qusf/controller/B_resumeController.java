@@ -2,7 +2,9 @@ package com.qusf.controller;
 
 import com.qusf.model.B_resume;
 import com.qusf.model.B_user;
+import com.qusf.model.RecruitView;
 import com.qusf.service.B_applicationService;
+import com.qusf.service.B_recruitService;
 import com.qusf.service.B_resumeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,8 @@ public class B_resumeController {
   private B_resumeService b_resumeService;
   @Resource
   private B_applicationService b_applicationService;
+  @Resource
+  private B_recruitService b_recruitService;
 
     /**
      * 用户添加简历
@@ -30,11 +34,13 @@ public class B_resumeController {
      * @return
      */
   @RequestMapping(value = "/addb_resume")
-  public String addB_resume(B_resume b_resume, HttpSession session){
+  public String addB_resume(B_resume b_resume, HttpSession session,Model model){
       try {
           B_user b_user = (B_user) session.getAttribute("user");
           b_resume.setRes_u_id(b_user.getU_id());
           b_resumeService.addB_resume(b_resume);
+          List<RecruitView> recruits=b_recruitService.findAllB_recruit();
+          model.addAttribute("recruits",recruits);
           return "index";
       }catch (Exception e){
           System.out.println(e);
@@ -71,9 +77,13 @@ public class B_resumeController {
     public String seeB_resume(HttpSession session){
         try{
             B_user b_user = (B_user) session.getAttribute("user");
-            List<B_resume> b_resumes = b_resumeService.seeB_resume(b_user.getU_id());
-            session.setAttribute("b_resumes",b_resumes);
-            return "myresume";
+            if (b_user==null){
+                return "login";
+            }else {
+                List<B_resume> b_resumes = b_resumeService.seeB_resume(b_user.getU_id());
+                session.setAttribute("b_resumes",b_resumes);
+                return "myresume";
+            }
         }catch (Exception e){
             System.out.println(e);
             return "";
@@ -90,10 +100,14 @@ public class B_resumeController {
     public String chooseB_resume(HttpSession session,int a_rec_id,Model model){
         try{
             B_user b_user = (B_user) session.getAttribute("user");
-            List<B_resume> b_resumes = b_resumeService.seeB_resume(b_user.getU_id());
-            session.setAttribute("b_resumes",b_resumes);
-            model.addAttribute("a_rec_id",a_rec_id);
-            return "resume";
+            if (b_user==null){
+                return "login";
+            }else {
+                List<B_resume> b_resumes = b_resumeService.seeB_resume(b_user.getU_id());
+                session.setAttribute("b_resumes",b_resumes);
+                model.addAttribute("a_rec_id",a_rec_id);
+                return "resume";
+            }
         }catch (Exception e){
             System.out.println(e);
             return "index";

@@ -9,67 +9,31 @@
     <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
     <script type="text/javascript" th:src="@{js/ztree/jquery.ztree.all-3.5.js}"></script>
     <script type="text/javascript" th:src="@{js/easyui/jquery.easyui.min.js}"></script>
-    <script>
-        /*******顶部特效 *******/
-        /**
-         * 更换EasyUI主题的方法
-         * @param themeName
-         * 主题名称
-         */
-        changeTheme = function(themeName) {
-            var $easyuiTheme = $('#easyuiTheme');
-            var url = $easyuiTheme.attr('href');
-            var href = url.substring(0, url.indexOf('themes')) + 'themes/'
-                + themeName + '/easyui.css';
-            $easyuiTheme.attr('href', href);
-            var $iframe = $('iframe');
-            if ($iframe.length > 0) {
-                for ( var i = 0; i < $iframe.length; i++) {
-                    var ifr = $iframe[i];
-                    $(ifr).contents().find('#easyuiTheme').attr('href', href);
-                }
-            }
-        };
-    </script>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+        #tableinfo{
+            position: absolute;
+            left: 85px;
+            margin-top: 50px;
+        }
+        #top{
+            position: absolute;
+            left: 85px;
+        }
+    </style>
 </head>
-<body  class="easyui-layout">
-    <div style="height: 100px" data-options="region:'north'">
-        <div th:style="'background:url('+ @{image/title-background.jpg} + ') no-repeat right; height:80px;padding:10px'">
-            <div id="sessionInfoDiv"
-                 style="position: absolute;right: 15px;top:10px;">
-                <a class="easyui-linkbutton" th:if="${session.user==null}" th:text="登录+'/'+注册" th:href="@{gotologin}"></a>
-                <span class="easyui-linkbutton" th:if="${session.user!=null}" th:text="${session.user.u_username}+',欢迎你！'"></span>
-            </div>
-            <!--<div style="position: absolute; right: 5px; bottom: 10px; ">-->
-                <!--<a th:href="@{'javascript:'+void+'(0)'}" class="easyui-menubutton" onclick="ar()"-->
-                   <!--data-options="menu:'#layout_north_pfMenu',iconCls:'icon-ok'">更换皮肤</a>-->
-                <!--<script>-->
-                    <!--function ar(){-->
-                        <!--alert("1111");-->
-                    <!--}-->
-                <!--</script>-->
-                <!--<a href="javascript:void(0)" class="easyui-menubutton"-->
-                   <!--data-options="menu:'#layout_north_kzmbMenu',iconCls:'icon-help'">控制面板</a>-->
-            <!--</div>-->
-            <!--<div id="layout_north_pfMenu" style="width: 120px; display: none;">-->
-                <!--<div onclick="changeTheme('default');">default</div>-->
-                <!--<div onclick="changeTheme('gray');">gray</div>-->
-                <!--<div onclick="changeTheme('black');">black</div>-->
-                <!--<div onclick="changeTheme('bootstrap');">bootstrap</div>-->
-                <!--<div onclick="changeTheme('metro');">metro</div>-->
-            <!--</div>-->
-            <!--<div id="layout_north_kzmbMenu" style="width: 100px; display: none;">-->
-                <!--<div onclick="editPassword();">修改密码</div>-->
-                <!--<div onclick="showAbout();">联系管理员</div>-->
-                <!--<div class="menu-sep"></div>-->
-                <!--<div onclick="logoutFun();">退出系统</div>-->
-            <!--</div>-->
-        </div>
+<body >
+    <div id="top">
+        <a th:href="@{seeb_resume}" style="margin-left:85px ">简历管理</a>
+        <a th:href="@{seeinterview}" style="margin-left:85px ">查看面试邀请</a>
+        <a style="margin-left:760px" th:if="${session.user==null}" th:text="登录+'/'+注册" th:href="@{gotologin}"></a>
+        <span style="margin-left:760px"  th:if="${session.user!=null}" th:text="${session.user.u_username}+',欢迎你！'"></span>
     </div>
-    <div style="width: 200px" data-options="region:'west'">
-    </div>
-    <div style="height: 100px" data-options="region:'center'">
-        <table>
+    <div id="tableinfo">
+        <table border="1px" cellspacing="0px">
             <tr>
                 <td>招聘职位</td>
                 <td>岗位要求</td>
@@ -87,9 +51,6 @@
                 <td><a th:href="@{chooseb_resume(a_rec_id=${recruit.rec_id})}">申请职位</a></td>
             </tr>
         </table>
-    </div>
-    <div style="width: 200px" data-options="region:'south'"></div>
-    <div style="width: 100px" data-options="region:'east'">
     </div>
 </body>
 </html>

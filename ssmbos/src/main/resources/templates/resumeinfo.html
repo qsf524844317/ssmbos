@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+    </style>
 </head>
 <body>
             <table>
@@ -11,6 +18,8 @@
                     <td>手机号</td>
                     <td>邮箱</td>
                     <td>学历</td>
+                    <td>工作经验</td>
+                    <td>项目经验</td>
                     <td>应聘职位</td>
                 </tr>
                 <tr th:each="resume:${resume}">
@@ -18,6 +27,8 @@
                     <td th:text="${resume.res_phone}"></td>
                     <td th:text="${resume.res_email}"></td>
                     <td th:text="${resume.res_education}"></td>
+                    <td th:text="${resume.res_workexperience}"></td>
+                    <td th:text="${resume.res_projectexperience}"></td>
                     <td th:text="${resume.res_p_name}"></td>
                 </tr>
             </table>

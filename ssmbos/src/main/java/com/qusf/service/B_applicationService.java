@@ -77,4 +77,8 @@ public class B_applicationService {
     public List<B_application> findInterviewB_application() {
         return b_applicationMapper.findB_applicationBya_state();
     }
+
+    public void acceptemp(int a_id) {
+        b_applicationMapper.acceptemp(a_id);
+    }
 }

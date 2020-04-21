@@ -3,23 +3,45 @@
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
+    <script>
+        $(function (){
+            $("#p_name").blur(function () {
+                var p_d_id=$("#p_d_id").val();
+                var p_name=$("#p_name").val();
+                if (p_d_id!="请选择部门"&&p_name!=""){
+                    $("#save").removeAttr("disabled")
+                }
+            });
+
+            $("#p_name").focus(function () {
+                $("#save").attr("disabled","");
+            });
+        });
+    </script>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+    </style>
 </head>
 <body>
     <form  action="saveb_position" method="post" >
         部门:
-        <select name="p_d_id">
+        <select name="p_d_id" id="p_d_id">
             <option>请选择部门</option>
             <option th:each="dept:${session.depts}" th:value="${dept.d_id}" th:text="${dept.d_name}" ></option>
         </select><br>
-        职位:<input type="text" name="p_name"><br>
+        职位:<input type="text" name="p_name" id="p_name"><br>
         薪资:
         <select name="p_salary">
-            <option value="3k-5k">3k-5k</option>
-            <option value="5k-8k">5k-8k</option>
-            <option value="8k-10k">8k-10k</option>
-            <option value="8k-10k">10k-13k</option>
+            <option value="4000">3k-5k</option>
+            <option value="7000">5k-8k</option>
+            <option value="9000">8k-10k</option>
+            <option value="11000">10k-13k</option>
         </select><br>
-        <input type="submit" value="保存">
+        <input type="submit" value="保存" id="save" disabled="">
     </form>
 </body>
 </html>

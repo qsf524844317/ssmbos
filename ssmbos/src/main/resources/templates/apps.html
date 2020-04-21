@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript" th:src="@{js/jquery-1.8.3.js}"></script>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+    </style>
 </head>
 <body>
     <table>
         <tr>
             <td>申请编号</td>
+            <td>申请人</td>
             <td>查看简历</td>
             <td>邀请面试</td>
         </tr>
         <tr th:each="apps:${applications}">
             <td th:text="${apps.a_id}"></td>
+            <td th:text="${apps.res_name}"></tdth:>
             <td><a th:href="@{getresume(a_res_id=${apps.a_res_id})}">查看简历</a></td>
             <td th:if="${apps.a_state==0}"><a th:href="@{gotoinvite(a_id=${apps.a_id})}">邀请面试</a></td>
             <td th:if="${apps.a_state==2}" ><span>已邀请</span></td>

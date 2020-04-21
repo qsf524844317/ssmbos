@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-image:url("images/bj.jpg");
+            background-size:100% auto;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>基本薪资</td>
+            <td>奖励金额</td>
+            <td>罚款金额</td>
+            <td>实发金额</td>
+            <td>发放时间</td>
+        </tr>
+
+        <tr th:each="salary:${salaries}">
+            <td th:text="${salary.s_jbsalary}"></td>
+            <td th:text="${salary.s_rewards}"></td>
+            <td th:text="${salary.s_punishment}"></td>
+            <td th:text="${salary.s_jbsalary+salary.s_rewards - salary.s_punishment}"></td>
+            <td th:text="${salary.s_time}"></td>
+        </tr>
+    </table>
+</body>
+</html>

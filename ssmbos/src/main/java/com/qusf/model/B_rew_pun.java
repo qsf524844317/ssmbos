@@ -11,6 +11,8 @@ public class B_rew_pun implements Serializable{
     private String re_reason;
     private int re_e_id;
     private int re_type;
+    private String e_name;
+    private String re_time;
 
     public B_rew_pun() {
     }
@@ -60,5 +62,21 @@ public class B_rew_pun implements Serializable{
 
     public void setRe_type(int re_type) {
         this.re_type = re_type;
+    }
+
+    public String getE_name() {
+        return e_name;
+    }
+
+    public void setE_name(String e_name) {
+        this.e_name = e_name;
+    }
+
+    public String getRe_time() {
+        return re_time;
+    }
+
+    public void setRe_time(String re_time) {
+        this.re_time = re_time;
     }
 }

@@ -17,7 +17,7 @@ public interface B_empMapper{
      * 添加员工
      * @param b_emp
      */
-    @Insert("INSERT INTO \"b_emp\" VALUES (\"auto_eid\".nextval,#{e_pass},#{e_name},#{e_email},#{e_phone},#{e_d_id},#{e_p_id},sysdate,1,#{e_education})")
+    @Insert("INSERT INTO \"b_emp\" VALUES (\"auto_eid\".nextval,#{e_pass},#{e_name},#{e_email},#{e_phone},#{e_d_id},#{e_p_id},sysdate,1,#{e_education},'无')")
     void saveB_emp(B_emp b_emp);
 
     /**

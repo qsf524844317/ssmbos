@@ -10,6 +10,9 @@ public class B_salary implements Serializable{
     private int s_e_id;
     private int s_rewards;
     private int s_punishment;
+    private int s_jbsalary;
+    private String s_time;
+    private String e_name;
 
     public B_salary() {
     }
@@ -51,5 +54,29 @@ public class B_salary implements Serializable{
 
     public void setS_punishment(int s_punishment) {
         this.s_punishment = s_punishment;
+    }
+
+    public int getS_jbsalary() {
+        return s_jbsalary;
+    }
+
+    public void setS_jbsalary(int s_jbsalary) {
+        this.s_jbsalary = s_jbsalary;
+    }
+
+    public String getS_time() {
+        return s_time;
+    }
+
+    public void setS_time(String s_time) {
+        this.s_time = s_time;
+    }
+
+    public String getE_name() {
+        return e_name;
+    }
+
+    public void setE_name(String e_name) {
+        this.e_name = e_name;
     }
 }

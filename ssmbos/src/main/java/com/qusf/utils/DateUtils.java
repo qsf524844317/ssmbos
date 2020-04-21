@@ -17,7 +17,7 @@ public class DateUtils {
         SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date =new Date();
         String s = sdf.format(date);
-        String str=s+" 09:00:00";
+        String str=s+" 09:01:00";
         Date date1=null;
         try {
             date1 = sdf1.parse(str);
@@ -55,6 +55,21 @@ public class DateUtils {
         Date date =new Date();
         String s = sdf.format(date);
         String str=s+" 12:00:00";
+        Date date1=null;
+        try {
+            date1 = sdf1.parse(str);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date1;
+    }
+
+    public static Date endgohomeDate(){
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date =new Date();
+        String s = sdf.format(date);
+        String str=s+" 23:59:59";
         Date date1=null;
         try {
             date1 = sdf1.parse(str);
